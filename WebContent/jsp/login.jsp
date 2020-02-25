@@ -14,34 +14,32 @@
 <title>Login</title>
 <style>
 	#bodyMain{
-		width: 900px;
+		width: 990px;
 		height: 800px;
 		margin: 100px auto;
 	}
 	#toMain{
 		display:inline-block;
-		width: 400px;
+		width: 495px;
 		height: 250px;
 	}
 	
 	#toMain>a {
 		display:inline-block;
-		width: 400px;
+		width: 495px;
 		height: 250px;
 		line-height: 100%;
 		text-align: center;
 	}
 	#leftPart{
-		border: 1px solid black;
 		display: inline;
-		width: 400px;
+		width: 495px;
 		height: 700px;
 		float: left;
 	}
 	#rightPart{
-		border: 1px solid black;
 		display: inline;
-		width: 400px;
+		width: 495px;
 		height: 700px;
 		float: left;
 	}
@@ -50,42 +48,49 @@
 		margin: 0 auto;
 	}
 	#s_id {
-		margin-left: 50px;
+		margin-left: 100px;
 		width: 300px;
 	}
 	#s_pw {
-		margin-left: 50px;
+		margin-left: 100px;
 		width: 300px;
 	}
 	#loginBtn{
-		margin-left: 50px;
+		margin-left: 100px;
 		width: 300px;
 	}
 	#airbnb{
 		color: #FCDE48;
 	}
 	.btn-group{
-		margin-left: 50px;
+		margin-left: 100px;
 		margin-bottom: 50px;
 		width: 300px;
 	}
 	.gftbtn{
 		display:inline-block;
 		width:300px;
-		margin-left: 50px;
+		margin-left: 100px;
 		margin-bottom: 5px;
+	}
+	.userMenu{
+		width:300px;
+		margin-left: 100px;
+		text-align: center;
 	}
 	
 
 </style>
 </head>
+<jsp:include page="header.jsp"/>
+<jsp:include page="menu.jsp"/>
 <body id="bodyMain" class="" style="">
 	<div id="leftPart">
 		<p>여기 그냥 간지용 이미지</p>
 	</div>
 	<div id="rightPart"> 
 	<div id="toMain">
-		<a href="#"><span id="airbnb" class="fab fa-airbnb fa-10x"><h1>으아아아아아</h1></span></a>
+		<a href="#"><span id="airbnb" class="fab fa-airbnb fa-8x"><h1>으아아아아아</h1></span></a>
 		
 	</div>
 	<div id="mobileWrap" class="mobileWrap">
@@ -101,11 +106,6 @@
 								<p class="pwWrap">
 									<input type="password" id="s_pw" name="s_pw" placeholder="비밀번호">
 								</p>
-								<div id="notice" role="tooltip"></div>
-								<input type="hidden" value="85396e55870c6670724b80a9bbd6ad"
-									id="stoken" name="stoken"> <input type="hidden"
-									value="" id="comm" name="comm"> <input type="hidden"
-									value="" id="sid" name="sid">
 								<p id="content">
 									<button id="loginBtn" class="btn btn-warning btn-large " 
 										type="submit">
@@ -137,7 +137,6 @@
 				</div>
 
 				<div class="userMenu">
-					<a href="#" class="register ">회원가입</a> 
 					<a href="#" class="findpw ">아이디/비밀번호 찾기</a>
 				</div>
 			</div>
