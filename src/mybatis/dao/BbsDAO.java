@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import mybatis.service.FactoryService;
+import project.vo.BbsVO;
 
 public class BbsDAO {
 	
