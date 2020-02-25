@@ -94,7 +94,7 @@
 			
 		</form>
 		<a href="javascripot:registry_ok(this.form)">
-			<img src ="images/registry_yet.png" onmouseover="this.src='images/registy_ok.png'" onmouseout="this.src='images/registry_yet.png'" alt="회원가입 마우스 올릴떄 변경"/>
+			<img src ="imges/registry_yet.png" onmouseover="this.src='imges/registy_ok.png'" onmouseout="this.src='imges/registry_yet.png'" alt="회원가입 마우스 올릴떄 변경"/>
 		</a>
 			
 	</div>

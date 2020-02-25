@@ -16,5 +16,6 @@ public class BbsDAO {
 		ss.close();
 		return 0;
 	}
+	
 
 }

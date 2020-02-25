@@ -17,8 +17,7 @@ public class BbsVO {
 		this.content = content;
 	}
 	public BbsVO(String subject, String writer, String content,
-			String file_name, String ori_name, String pwd, String ip,
-			String hit, String status, String recommend, String kategorie, String type) {
+			String file_name, String ori_name, String pwd, String ip, String hit, String status, String recommend, String kategorie) {
 		this.subject = subject;
 		this.writer = writer;
 		this.content = content;
@@ -30,7 +29,6 @@ public class BbsVO {
 		this.status = status;
 		this.recommend = recommend;
 		this.kategorie = kategorie;
-		this.type = type;
 	}
 
 	// getter setter ------------------------------------------------------------------------------
