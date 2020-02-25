@@ -7,7 +7,7 @@ public class BbsVO {
 	private String type, b_idx, subject, writer, content, file_name, ori_name,
 					pwd, write_date, ip, hit, status, recommend, kategorie;
 	private List<CommVO> c_list;
-	
+
 	// constructor --------------------------------------------------------------------------------
 	public BbsVO() { }
 	public BbsVO(String b_idx, String subject, String writer, String content) {
@@ -64,5 +64,5 @@ public class BbsVO {
 	public void setKategorie(String kategorie) { this.kategorie = kategorie; }
 	public String getType() { return type; }
 	public void setType(String type) { this.type = type; }
-	
+
 }
