@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BbsVO {
 
-	private String b_idx, subject, writer, content, file_name, ori_name,
+	private String type, b_idx, subject, writer, content, file_name, ori_name,
 					pwd, write_date, ip, hit, status, recommend, kategorie;
 	private List<CommVO> c_list;
 	
@@ -17,7 +17,8 @@ public class BbsVO {
 		this.content = content;
 	}
 	public BbsVO(String subject, String writer, String content,
-			String file_name, String ori_name, String pwd, String ip, String hit, String status, String recommend, String kategorie) {
+			String file_name, String ori_name, String pwd, String ip,
+			String hit, String status, String recommend, String kategorie, String type) {
 		this.subject = subject;
 		this.writer = writer;
 		this.content = content;
@@ -29,6 +30,7 @@ public class BbsVO {
 		this.status = status;
 		this.recommend = recommend;
 		this.kategorie = kategorie;
+		this.type = type;
 	}
 
 	// getter setter ------------------------------------------------------------------------------
@@ -60,5 +62,7 @@ public class BbsVO {
 	public void setRecommend(String recommend) { this.recommend = recommend; }
 	public String getKategorie() { return kategorie; }
 	public void setKategorie(String kategorie) { this.kategorie = kategorie; }
+	public String getType() { return type; }
+	public void setType(String type) { this.type = type; }
 	
 }
