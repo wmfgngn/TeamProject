@@ -43,5 +43,11 @@
 		WHERE b_idx = #{b_idx}
 	</update>
 	
+		<!-- 글쓰기 -->
+	<insert id="addBbs" parameterType="project.vo.BbsVO">
+		INSERT INTO inven_bbs(type, b_idx, subject, writer, content, write_date, ip, status, file_name, hit, ori_name, pwd, recommend, kategorie)
+		values(#{type}, bbs_t_seq.NEXTVAL, #{subject}, #{writer}, #{content}, sysdate, #{ip}, 0, #{file_name}, 0, #{ori_name}, #{pwd}, 0, #{kategorie})
+	</insert>
+	
 	
 </mapper>
