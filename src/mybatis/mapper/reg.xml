@@ -4,4 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reg">
 		
+		
+		
+		
+		
+		
+		
+	<select id="login" parameterType="java.util.Map" resultType="project.vo.RegVO">
+		select * from regist_t
+	 	where s_id = #{s_id} AND s_pw = #{s_pw}
+	</select>
+		
 </mapper>

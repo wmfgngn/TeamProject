@@ -31,7 +31,7 @@
 	<div id="mobileWrap" class="mobileWrap">
 		<div class="" id="page">
 			<div id="mobileLogin">
-				<form id="loginForm" name="loginForm">
+				<form id="loginForm" action="control?type=login_ok" method="post">
 					<fieldset>
 						<div id="loginWrap" class="loginWrap">
 							<div class="loginUserInfo">
@@ -42,10 +42,9 @@
 									<input type="password" id="s_pw" name="s_pw" placeholder="비밀번호">
 								</p>
 								<p id="content">
-									<button id="loginBtn" class="btn btn-warning btn-large " 
-										type="submit">
+									<intput id="loginBtn" class="btn btn-warning btn-large " type="button">
 										<span><i class="fa fa-sign-in"></i> 로그인</span>
-									</button>
+									</intput>
 								</p>
 							</div>
 							<div class="saveid">
@@ -82,7 +81,36 @@
 	
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			
+			$("#loginBtn").bind("click", function(){
+				var s_id = $("#s_id").val();
+				var s_pw = $("#s_pw").val();
+				console.log(s_id);
+				var param = "s_id="+encodeURIComponent(s_id)+
+					"&s_pw="+encodeURIComponent(s_pw);
+				
+				$.ajax({
+					url: "control?type=login_ok",
+					type: "post",
+					data: param,
+					dataType: "json"
+				}).done(function(data){
+					if(data.res == "true")
+						location.href = "control?type=main";
+					else{
+						alert("!");
+					}
+				}).fail(function(err){
+					
+				});
+				
+			});
+			
+		});	
+	</script>
 </body>
 <footer>
 	<div id="invenFoot" class="footline" >
@@ -90,3 +118,13 @@
 	</div>
 </footer>
 </html>
+
+
+
+
+
+
+
+
+
+

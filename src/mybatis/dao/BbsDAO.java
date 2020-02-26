@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import mybatis.service.FactoryService;
 import project.vo.BbsVO;
+import project.vo.RegVO;
 
 public class BbsDAO {
 	
@@ -41,5 +42,33 @@ public class BbsDAO {
 			ss.rollback();
 		ss.close();
 	}
+	
+	// 로그인
+	public static RegVO login(String s_id, String s_pw) {
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("s_id", s_id);
+		map.put("s_pw", s_pw);
+		
+		RegVO vo = ss.selectOne("login", map);
+		ss.close();
+		
+		return vo;
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
