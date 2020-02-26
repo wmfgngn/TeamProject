@@ -17,6 +17,7 @@ public class RegDAO {
 		// INSERT INTO REGIST_T(r_idx,s_id,s_pw,s_name,s_phone,s_gender,status,b_idx)
 		// VAlUES ( Regist_t_seq.NEXTVAL,#{s_id},#{s_pw},#{s_name},#{s_phone},#{s_gender},0,#{b_idx})
 		
+		SqlSession ss = FactoryService.getFactory().openSession();
 		String s_phone = "";
 		for(int i = 0 ; i < phone.length ; i++) {
 			s_phone += phone[i];
@@ -36,7 +37,6 @@ public class RegDAO {
 		map.put("s_phone",s_phone);
 		map.put("s_gender",gender);
 		
-		SqlSession ss = FactoryService.getFactory().openSession();
 		
 		int cnt = ss.insert("reg.add" ,map); // 회원 추가
 		if(cnt > 0) {

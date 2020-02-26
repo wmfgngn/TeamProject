@@ -16,4 +16,18 @@
 	<select id="member" parameterType="String">
 		select * from reg_t where s_id =#{id}
 	</select>
+	<!-- 회원수정 -->
+	<update id="crystal" parameterType="java.util.Map">
+		UPDATA reg_t
+		SET 
+			s_pw = #{s_pw},
+			s_phone = #{s_phone}
+	</update>
+		<!-- 회원 탈퇴 -->
+	<update id="taltoe" parameterType="String">
+		UPDATE reg_t
+		SET
+			status =1
+		WHERE s_pw =#{s_pw}	
+	</update>
 </mapper>

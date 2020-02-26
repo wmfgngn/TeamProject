@@ -12,14 +12,14 @@
 	<!--******************************-->
 	
 	<!-- 글의 목록을 만들기 위해 호출 -->
-	<resultMap type="mybatis.vo.BbsVO" id="map">
+	<resultMap type="project.vo.BbsVO" id="map">
 		<id column="b_idx" property="b_idx"/>
-		<collection property="c_list" ofType="mybatis.vo.CommVO"
+		<collection property="c_list" ofType="project.vo.CommVO"
 			select="com" column="b_idx"/>
 	</resultMap>
 
 	<!-- 특정 글의 기본키를 조건으로 글의 댓글을 조회 -->	
-	<select id="com" resultType="mybatis.vo.CommVO" parameterType="String">
+	<select id="com" resultType="project.vo.CommVO" parameterType="String">
 		SELECT * FROM comment_t
 		WHERE b_idx = #{b_idx}
 		ORDER BY c_idx
@@ -41,6 +41,20 @@
 		UPDATE inven_bbs
 		SET hit = hit+1
 		WHERE b_idx = #{b_idx}
+	</update>
+	
+		<!-- 글쓰기 -->
+	<insert id="addBbs" parameterType="project.vo.BbsVO">
+		INSERT INTO inven_bbs(type, b_idx, subject, writer, content, write_date, ip, status, file_name, hit, ori_name, pwd, recommend, kategorie)
+		values(#{type}, bbs_t_seq.NEXTVAL, #{subject}, #{writer}, #{content}, sysdate, #{ip}, 0, #{file_name}, 0, #{ori_name}, #{pwd}, 0, #{kategorie})
+	</insert>
+	
+	<!-- 글 삭제 -->
+	<update id="del" parameterType="String">
+		update inven_bbs
+		set
+			status = 1
+		where b_idx = #{b_idx}
 	</update>
 	
 	

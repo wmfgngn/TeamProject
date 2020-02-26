@@ -29,7 +29,6 @@ public class RegAction implements Action {
 			viewPath = "control?type=main";// 회원가입 에서 "가입"눌렀을떄
 		}
 		
-		System.out.println(viewPath);
 		return viewPath;
 	}
 
