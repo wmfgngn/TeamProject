@@ -3,7 +3,6 @@ package project.vo;
 import java.util.List;
 
 public class BbsVO {
-
 	private String type, b_idx, subject, writer, content, file_name, ori_name,
 	pwd, write_date, ip, hit, status, recommend, kategorie;
 	private List<CommVO> c_list;

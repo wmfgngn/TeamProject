@@ -50,7 +50,9 @@
 	if(obj02 != null) {
 		ar = (BbsVO[])obj02;
 	}
-
+	
+	String requnum = request.getParameter("reqnum");
+	
 	session.setAttribute("page", pvo);
 %>
 			<tfoot>
@@ -81,7 +83,7 @@
                         </ol>
 					</td>
 					<td style="border-left: none;">
-						<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>'"/>
+						<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>'&reqnum=<%=requnum%>"/>
 					</td>
 				</tr>
 			</tfoot>

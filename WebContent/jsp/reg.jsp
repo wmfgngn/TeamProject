@@ -139,7 +139,7 @@
 				$("#s_phone3").focus();
 				return;
 			}
-			
+
 			alert("가입완료");
 			frm.submit();
 		});
@@ -161,7 +161,7 @@
 			}else{
 				$("#box").html("ID중복");
 			}
-			
+
 		});
 		
 	});

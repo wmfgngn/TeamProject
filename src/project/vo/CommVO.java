@@ -2,6 +2,7 @@ package project.vo;
 
 public class CommVO {
 	private String c_idx, writer, content, pwd, write_date, ip, b_idx;
+	private RegVO rvo;
 	
 	// constructor --------------------------------------------------------------------------------
 	public CommVO() { }
@@ -28,4 +29,7 @@ public class CommVO {
 	public void setIp(String ip) { this.ip = ip; }
 	public String getB_idx() { return b_idx; }
 	public void setB_idx(String b_idx) { this.b_idx = b_idx; }
+	public RegVO getRvo() { return rvo; }
+	public void setRvo(RegVO rvo) { this.rvo = rvo; }
+
 }
