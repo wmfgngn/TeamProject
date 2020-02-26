@@ -2,7 +2,9 @@ package project.vo;
 
 public class RegVO {
 	
-	private String s_id,s_pw,s_name,s_phone,s_gender,status;
+	private String s_id, s_pw, s_name, s_phone, s_gender, status;
+	
+	
 	//-----------------------------------------------------
 	public String getS_id() {
 		return s_id;
