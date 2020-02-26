@@ -51,7 +51,6 @@ public class LoginOkAction implements Action {
 		// f5 즉, 화면 갱신을 하면 저장된 정보가 계속 저장된다.
 		//viewPath = "control?type=list";
 			viewPath = "/jsp/login_ajax.jsp";
-			
 		}
 		
 		

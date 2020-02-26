@@ -13,7 +13,7 @@
 <%
   	Object obj = session.getAttribute("loVo");
 	RegVO vo = null;
-	
+
   	if(obj != null) {
   		vo = (RegVO)obj;  		
 %>
