@@ -90,7 +90,7 @@
 					</td>
 			</tr>
 		</table>
-			
+			<%--으갸갸갸 --%>
 			
 		</form>
 		<a href="javascripot:registry_ok(this.form)">
@@ -102,6 +102,7 @@
 		
 		
 		function registry_ok(){
+			
 		}
 	</script>
 </body>

@@ -8,7 +8,7 @@ public class LoginAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// 해야할일...
-		//그냥 로그인 화면 이동
+		//그냥 로그인 화면 이동 으오오오아아아아
 		
 		return "/jsp/login.jsp";
 	}
