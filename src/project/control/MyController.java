@@ -86,10 +86,12 @@ public class MyController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		String type = request.getParameter("type");
+		String reqnum = request.getParameter("reqnum");
 		System.out.println("\ntype : " + type);
 		if(type == null) {
-			type = "list";
+			type = "main";
 		}
+
 
 		// type의 값은 actionMap의 key로 사용
 		Action action = actionMap.get(type);
