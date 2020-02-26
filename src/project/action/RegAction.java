@@ -26,7 +26,7 @@ public class RegAction implements Action {
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
-			viewPath = "control?type=login";// 회원가입 에서 "가입"눌렀을떄
+			viewPath = "control?type=main";// 회원가입 에서 "가입"눌렀을떄
 		}
 		
 		System.out.println(viewPath);

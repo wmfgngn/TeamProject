@@ -12,4 +12,8 @@
 		INSERT INTO REGIST_T(r_idx,s_id,s_pw,s_name,s_phone,s_gender,status)
 		VAlUES ( Regist_t_seq.NEXTVAL,#{s_id},#{s_pw},#{s_name},#{s_phone},#{s_gender},0)
 	</insert>
+	<!-- 가입된 멤버 정보 찾기용  -->
+	<select id="member" parameterType="String">
+		select * from reg_t where s_id =#{id}
+	</select>
 </mapper>
