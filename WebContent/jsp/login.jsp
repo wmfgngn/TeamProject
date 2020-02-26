@@ -87,9 +87,11 @@
 		
 		$(function(){
 			var st = getStorage();
+			
+			
 			if(st != null)
 				$("#save_id").prop("checked", true);
-			else
+			else if(st == null)
 				$("#save_id").prop("checked", false);
 			
 			if($("#save_id").is(":checked") == false){
@@ -113,7 +115,7 @@
 				}
 					
 				$.ajax({
-					url: "control?type=login_ok",
+					url: "control?type=login",
 					type: "post",
 					data: param,
 					dataType: "json"
