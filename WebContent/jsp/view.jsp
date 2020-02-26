@@ -1,3 +1,6 @@
+<%@page import="project.vo.CommVO"%>
+<%@page import="java.util.List"%>
+<%@page import="project.vo.BbsVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -55,61 +58,105 @@
 		font-size: 1.5em;
 	}
 	
-	#tbd .ans{
-		border-top: 1px solid gray;
-		border-bottom: 1px solid gray;
-		
-	}
-	
 </style>
 </head>
+<%
+	Object obj = request.getAttribute("vo");
+	
+	if(obj != null){
+		BbsVO vo = (BbsVO)obj;
+%>
+
 <body>
 	<div id="view">
 		<div id="adr">
 			<!-- 해당 게시글의 주소를 보여주는 버튼 -->
-			<button type=button id="add" onclick="add()">주소보기</button>
+			<button type=button id="adr_bt" name="adr">주소보기</button>
 			<!-- 해당 게시글의 주소를 복사할 수 있는 버튼 -->
-			<button type=button id="copy" onclick="copy()">복사</button>
+			<button type=button id="copy_bt" name="copy">복사</button>
 			<!-- 해당 게시글이 속해있는 게시판 목록으로 갈 수 있는 링크 -->
+			<lable id="lb"></lable>
 			<a href="">해당 게시판 목록</a>
 		</div>
 		<div id="content">
 			<table id="ct">
 				<thead id="thd">
 					<tr>
-						<th><span class="sp">닉네임</span></th>
-						<th>작성일</th>
-						<th>조회: <span class="sp">조회수</span></th>
-						<th>추천: <span class="sp">추천수</span></th>
+						<th><span class="sp">닉네임<%=vo.getWriter() %></span></th>
+						<th>작성일<%=vo.getWrite_date() %></th>
+						<th>조회: <span class="sp">조회수<%=vo.getHit() %></span></th>
+						<th>추천: <span class="sp">추천수<%=vo.getRecommend() %></span></th>
 					</tr>
 				</thead>
 				<tbody id="tbd">
 					<tr>
-						<td>[카테고리]</td>
-						<td class="mv" colspan="3"><a href="">목록</a>｜<a href="">댓글</a></td>
+						<td>[카테고리<%=vo.getKategorie() %>]</td>
+						<td class="mv" colspan="3"><a href="Bbs_List.jsp">목록</a>｜<a href="#ans">댓글</a></td>
 					</tr>
 					<tr>
-						<td id="title" colspan="4">제목</td>
+						<td id="title" colspan="4">제목<%=vo.getSubject() %></td>
 					</tr>
 					<tr>
-						<td colspan="4">내용</td>
+						<td colspan="4">내용<%=vo.getContent() %></td>
 					</tr>
 					<tr>
 						<td colspan="4"><button type="button" id="best" onclick="best()">추천</button></td>
 					</tr>
+					<tr>
+						<td colspan="4"><button type=button id="view_del" onclick="view_del()">삭제</button></td>
+					</tr>
 				</tbody>
 			</table>
 			<table id="ans">
-				<hr/>
+<%
+	List<CommVO> c_list = vo.getC_list();
+
+		for(CommVO cvo : c_list){
+%>
 				<tr>
-					<td colspan="4">댓글닉네임(댓글작성일)</td>
+					<td colspan="4">댓글닉네임<%=cvo.getWriter() %>(댓글작성일<%=cvo.getWrite_date() %>)</td>
 				</tr>
 				<tr>
-					<td colspan="4">댓글내용</td>
+					<td colspan="4">댓글내용<%=cvo.getContent() %></td>
 				</tr>
+				<tr>
+					<td colspan="4"><button type=button id="ans_del" onclick="ans_del()">삭제</button></td>
+				</tr>
+<%
+		}//for의 끝
+	}else{
+		response.sendRedirect("control");
+%>
 			</table>
-				<hr/>
+	<hr/>
 	</div>
 	</div>
+<%
+	}
+%>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+	$(function(){
+		var url = $(location).attr('href');
+		var ad = (url);
+
+		$("#adr_bt").bind("click",function(){
+		
+			$("#lb").text(ad);
+		
+		});
+
+		$("#copy_bt").bind("click",function(){
+			
+			$("#lb").select();
+			var sc = document.execCommand('copy'); 
+			console.log(sc);
+	        
+			alert('복사되었습니다.'); 
+		});
+		
+		
+	});
+	</script>
 </body>
 </html>
