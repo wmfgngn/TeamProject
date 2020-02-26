@@ -81,7 +81,7 @@
 							<li class="disable">&lt;</li>
 					<%	} else { %>
 							<li><a href="control?type=list&cPage=<%= pvo.getNowPage() - pvo.getPagePerBlock()%>">◀</a></li>
-					<%	} 
+					<%	}
 						for(int i = pvo.getStartPage() ; i <= pvo.getEndPage() ; i++)  {
 							if(pvo.getNowPage() != i) { %>
 								<li><a href="control?type=list&cPage=<%=i%>"><%=i%></a></li>
@@ -112,7 +112,7 @@
 						<td><%=num%></td>
 						<td style="text-align: left">
 							<a href="javascript:view('<%=pvo.getNowPage()%>', '<%=ar[i].getB_idx()%>')">
-								<%="[" + ar[i].getKategorie() + "]\t" + ar[i].getSubject()%>
+								<%=ar[i].getSubject()%>
 							<%	if(ar[i].getC_list().size() > 0) { %>
 									(<%=ar[i].getC_list().size() %>)
 							<%	} %>
@@ -134,9 +134,19 @@
 		</table>
 	</div>
 	
+	<form action="control" method="post" name="frm">
+		<input type="hidden" name="type" value="view"/>
+		<input type="hidden" name="cPage" />
+		<input type="hidden" name="b_idx" />
+	</form>
+	
 	<%-- Script *******************************************************************--%>
 	<script>
-	
+		function view(cPage, b_idx) {
+			document.frm.b_idx.value = b_idx;
+			document.frm.cPage.value = cPage;
+			document.frm.submit();
+		}
 	</script>
 </div>
 </body>
