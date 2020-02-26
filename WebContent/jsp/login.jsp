@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../css/sb-admin-2.min.css"/>
     <link rel="stylesheet" href="../css/fontawesome/all.min.css"/>
     <link rel="stylesheet" href="css/loginStyle.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
 <title>Login</title>
 
 </head>
@@ -84,7 +83,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script>
+	
+		
 		$(function(){
+			var st = getStorage();
+			
+			
+			if(st != null)
+				$("#save_id").prop("checked", true);
+			else if(st == null)
+				$("#save_id").prop("checked", false);
+			
+			if($("#save_id").is(":checked") == false){
+				st.clear();
+				$("#save_id").prop("checked", false);
+			}
+			init(st);
 			
 			$("#loginBtn").bind("click", function(){
 				var s_id = $("#s_id").val();
@@ -93,8 +107,15 @@
 				var param = "s_id="+encodeURIComponent(s_id)+
 					"&s_pw="+encodeURIComponent(s_pw);
 				
+				if($("#save_id").is(":checked") == true){
+					saveId(s_id, st);
+				}else{ 
+					st.clear();	
+				
+				}
+					
 				$.ajax({
-					url: "control?type=login_ok",
+					url: "control?type=login",
 					type: "post",
 					data: param,
 					dataType: "json"
@@ -110,7 +131,39 @@
 				
 			});
 			
+			if($("#save_id").is(":checked") == true){
+				
+			}
+			
 		});	
+		
+		function saveId(s_id, st){
+			st.setItem("s_id", s_id)
+			
+			
+		}
+		
+		function init(st) {
+			
+			for(var i = 0; i<st.length; i++){
+				var key = st.key(i);
+				var value = st.getItem(key);
+
+				$("#s_id").val(value);
+			}
+		}
+		
+		function getStorage() {
+			try {
+				if(window.sessionStorage){ //접속되는 브라우저마다 별개로 저장한다.
+					//윈도우는 전체창 // 다큐먼트는 표현되는 창만
+					return window.sessionStorage; // 저장된게있다면 저장된걸반환해라
+				}
+			} catch (e) { // 예외처리..
+				//예외가 발생하면 이곳을 수행한다.
+				return undefined;
+			}
+		}
 	</script>
 </body>
 <footer>
