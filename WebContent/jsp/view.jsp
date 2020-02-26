@@ -1,3 +1,4 @@
+<%@page import="project.vo.RegVO"%>
 <%@page import="project.vo.CommVO"%>
 <%@page import="java.util.List"%>
 <%@page import="project.vo.BbsVO"%>
@@ -61,8 +62,11 @@
 </style>
 </head>
 <%
-	Object obj = request.getAttribute("vo");
+
 	
+	Object obj = request.getAttribute("vo");
+	RegVO rvo = (RegVO)session.getAttribute("loVo");
+	String reqnum = request.getParameter("reqnum");
 	if(obj != null){
 		BbsVO vo = (BbsVO)obj;
 %>
@@ -103,7 +107,11 @@
 						<td colspan="4"><button type="button" id="best" onclick="best()">추천</button></td>
 					</tr>
 					<tr>
-						<td colspan="4"><button type=button id="view_del" onclick="view_del()">삭제</button></td>
+					<%
+					if(vo.getRvo().getR_idx() == rvo.getR_idx()){
+					%>
+						<td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>')">삭제</button></td>
+					<% }%>
 					</tr>
 				</tbody>
 			</table>
@@ -118,9 +126,9 @@
 				</tr>
 				<tr>
 					<td colspan="4">댓글내용<%=cvo.getContent() %></td>
-				</tr>
+				</tr>	
 				<tr>
-					<td colspan="4"><button type=button id="ans_del" onclick="ans_del()">삭제</button></td>
+					<td colspan="4"><button type=button id="ans_del" onclick="ans_del('<%=vo.getB_idx()%>')">삭제</button></td>
 				</tr>
 <%
 		}//for의 끝
@@ -155,8 +163,35 @@
 			alert('복사되었습니다.'); 
 		});
 		
-		
 	});
+	
+	function view_del(reqnum){
+		$.ajax({
+			url:"control",
+			type:"post",
+			data:"type=view_del",
+			dataType:"json"
+		}).done(function(data){
+			location.href="control?type=list&reqnum="encodeURIComponent(reqnum);
+		}).fail(function(err){
+			
+		});
+		
+	}
+	
+	function ans_del(b_idx){
+		$.ajax({
+			url:"control",
+			type:"post",
+			data:"type=ans_del",
+			dataType:"json"
+		}).done(function(data){
+			location.href="control?type=view&b_idx="encodeURIComponent(b_idx);
+		}).fail(function(err){
+			
+		});
+	}
+
 	</script>
 </body>
 </html>
