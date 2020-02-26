@@ -74,6 +74,19 @@ public class BbsDAO {
 		
 		return vo;
 	}
+	
+	public static void add(BbsVO vo) {
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		int cnt = ss.insert("addBbs", vo);
+		if(cnt > 0) {
+			ss.commit();
+		}
+		
+		ss.close();
+		
+		
+	}
 
 }
 
