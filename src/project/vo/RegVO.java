@@ -2,9 +2,16 @@ package project.vo;
 
 public class RegVO {
 	
-	private String s_id, s_pw, s_name, s_phone, s_gender, status;
-	
-	
+	private String r_idx,s_id,s_pw,s_name,s_phone,s_gender,status;
+	//-------------------------------------------시퀀스 넘버 추가
+	public String getR_idx() {
+		return r_idx;
+	}
+
+	public void setR_idx(String r_idx) {
+		this.r_idx = r_idx;
+	}
+
 	//-----------------------------------------------------
 	public String getS_id() {
 		return s_id;
