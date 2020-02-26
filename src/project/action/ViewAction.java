@@ -50,7 +50,7 @@ public class ViewAction implements Action {
 			request.setAttribute("vo", vo);
 			request.setAttribute("cPage", cPage);
 		}
-		return "/view.jsp";
+		return "/jsp/view.jsp";
 	}
 
 }

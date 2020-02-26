@@ -65,8 +65,13 @@
 
 	
 	Object obj = request.getAttribute("vo");
-	RegVO rvo = (RegVO)session.getAttribute("loVo");
+	Object obj2 = session.getAttribute("loVo");
 	String reqnum = request.getParameter("reqnum");
+	RegVO rvo = null;
+	
+	if(obj2 != null) {
+		rvo = (RegVO)session.getAttribute("loVo");
+	}
 	if(obj != null){
 		BbsVO vo = (BbsVO)obj;
 %>
@@ -108,10 +113,12 @@
 					</tr>
 					<tr>
 					<%
-					if(vo.getRvo().getR_idx() == rvo.getR_idx()){
+					if(rvo != null) {
+					if(vo.getRvo().getR_idx().equals(rvo.getR_idx())){
 					%>
 						<td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>')">삭제</button></td>
-					<% }%>
+					<% }
+					}%>
 					</tr>
 				</tbody>
 			</table>
@@ -155,7 +162,7 @@
 		});
 
 		$("#copy_bt").bind("click",function(){
-			
+
 			$("#lb").select();
 			var sc = document.execCommand('copy'); 
 			console.log(sc);

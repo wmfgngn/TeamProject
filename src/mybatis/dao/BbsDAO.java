@@ -39,7 +39,6 @@ public class BbsDAO {
 	
 	// View DAO
 	public static BbsVO view(String b_idx) {
-		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		BbsVO vo = ss.selectOne("bbs.view",b_idx);
 		

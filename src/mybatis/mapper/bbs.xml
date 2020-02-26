@@ -37,6 +37,13 @@
 	</select>
 	<!--******************************-->
 	
+	<!-- 기본키(b_idx)를 이용한 특정글 조회 -->
+	<select id="view" resultMap="map" parameterType="String">
+		SELECT * FROM inven_bbs
+		WHERE b_idx = #{b_idx}
+	</select>
+	<!--******************************-->
+	
 	<!-- 조회수 증가 -->
 	<update id="hit" parameterType="String">
 		UPDATE inven_bbs
