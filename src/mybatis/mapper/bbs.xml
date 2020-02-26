@@ -26,4 +26,6 @@
 		SET hit = hit+1
 		WHERE b_idx = #{b_idx}
 	</update>
+	
+	
 </mapper>

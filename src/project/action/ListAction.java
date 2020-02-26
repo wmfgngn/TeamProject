@@ -13,6 +13,10 @@ public class ListAction implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		String path = null;
 		PageVO page = new PageVO();	// 한 페이지당 보여지는 게시물 수 (2), 페이지 묶음 (5) >> 기본 값
+		String reqnum = request.getParameter("reqnum");
+		if (reqnum == null) {
+			reqnum = "1";
+		}
 		
 		// 페이징기법 변수 설정
 		page.setTotalRecord(BbsDAO.getTotalCount());	// 총 게시물 수 (1), 전체 페이지 수 (3)
@@ -35,7 +39,7 @@ public class ListAction implements Action {
 		System.out.println("nowpage : " + pvo.getNowPage());
 		
 		// 공지, 자유, 팁
-		switch(request.getParameter("reqnum")) {
+		switch(reqnum) {
 			case "1":
 				path = "/jsp/Bbs_List01.jsp";
 				break;

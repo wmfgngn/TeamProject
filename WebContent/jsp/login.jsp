@@ -11,76 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../css/sb-admin-2.min.css"/>
     <link rel="stylesheet" href="../css/fontawesome/all.min.css"/>
+    <link rel="stylesheet" href="css/loginStyle.css"/>
 <title>Login</title>
-<style>
-	#bodyMain{
-		width: 990px;
-		height: 800px;
-		margin: 100px auto;
-	}
-	#toMain{
-		display:inline-block;
-		width: 495px;
-		height: 250px;
-	}
-	
-	#toMain>a {
-		display:inline-block;
-		width: 495px;
-		height: 250px;
-		line-height: 100%;
-		text-align: center;
-	}
-	#leftPart{
-		display: inline;
-		width: 495px;
-		height: 700px;
-		float: left;
-	}
-	#rightPart{
-		display: inline;
-		width: 495px;
-		height: 700px;
-		float: left;
-	}
-	#invenFoot{
-		display:inline-block;
-		margin: 0 auto;
-	}
-	#s_id {
-		margin-left: 100px;
-		width: 300px;
-	}
-	#s_pw {
-		margin-left: 100px;
-		width: 300px;
-	}
-	#loginBtn{
-		margin-left: 100px;
-		width: 300px;
-	}
-	#airbnb{
-		color: #FCDE48;
-	}
-	.btn-group{
-		margin-left: 100px;
-		margin-bottom: 50px;
-		width: 300px;
-	}
-	.gftbtn{
-		display:inline-block;
-		width:300px;
-		margin-left: 100px;
-		margin-bottom: 5px;
-	}
-	.userMenu{
-		width:300px;
-		margin-left: 100px;
-		text-align: center;
-	}
-	
 
-</style>
 </head>
 <jsp:include page="header.jsp"/>
 <jsp:include page="menu.jsp"/>
@@ -98,7 +31,7 @@
 	<div id="mobileWrap" class="mobileWrap">
 		<div class="" id="page">
 			<div id="mobileLogin">
-				<form id="loginForm" name="loginForm">
+				<form id="loginForm" action="control?type=login_ok" method="post">
 					<fieldset>
 						<div id="loginWrap" class="loginWrap">
 							<div class="loginUserInfo">
@@ -109,10 +42,9 @@
 									<input type="password" id="s_pw" name="s_pw" placeholder="비밀번호">
 								</p>
 								<p id="content">
-									<button id="loginBtn" class="btn btn-warning btn-large " 
-										type="submit">
+									<intput id="loginBtn" class="btn btn-warning btn-large " type="button">
 										<span><i class="fa fa-sign-in"></i> 로그인</span>
-									</button>
+									</intput>
 								</p>
 							</div>
 							<div class="saveid">
@@ -149,7 +81,36 @@
 	
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			
+			$("#loginBtn").bind("click", function(){
+				var s_id = $("#s_id").val();
+				var s_pw = $("#s_pw").val();
+				console.log(s_id);
+				var param = "s_id="+encodeURIComponent(s_id)+
+					"&s_pw="+encodeURIComponent(s_pw);
+				
+				$.ajax({
+					url: "control?type=login_ok",
+					type: "post",
+					data: param,
+					dataType: "json"
+				}).done(function(data){
+					if(data.res == "true")
+						location.href = "control?type=main";
+					else{
+						alert("!");
+					}
+				}).fail(function(err){
+					
+				});
+				
+			});
+			
+		});	
+	</script>
 </body>
 <footer>
 	<div id="invenFoot" class="footline" >
@@ -157,3 +118,13 @@
 	</div>
 </footer>
 </html>
+
+
+
+
+
+
+
+
+
+

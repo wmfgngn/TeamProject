@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+	#bodyMain{
+		width: 990px;
+		height: 800px;
+		margin: 100px auto;
+	}
+	#toMain{
+		display:inline-block;
+		width: 495px;
+		height: 250px;
+	}
+	
+	#toMain>a {
+		display:inline-block;
+		width: 495px;
+		height: 250px;
+		line-height: 100%;
+		text-align: center;
+	}
+	#leftPart{
+		display: inline;
+		width: 495px;
+		height: 700px;
+		float: left;
+	}
+	#rightPart{
+		display: inline;
+		width: 495px;
+		height: 700px;
+		float: left;
+	}
+	#invenFoot{
+		display:inline-block;
+		margin: 0 auto;
+	}
+	#s_id {
+		margin-left: 100px;
+		width: 300px;
+	}
+	#s_pw {
+		margin-left: 100px;
+		width: 300px;
+	}
+	#loginBtn{
+		margin-left: 100px;
+		width: 300px;
+	}
+	#airbnb{
+		color: #FCDE48;
+	}
+	.btn-group{
+		margin-left: 100px;
+		margin-bottom: 50px;
+		width: 300px;
+	}
+	.gftbtn{
+		display:inline-block;
+		width:300px;
+		margin-left: 100px;
+		margin-bottom: 5px;
+	}
+	.userMenu{
+		width:300px;
+		margin-left: 100px;
+		text-align: center;
+	}

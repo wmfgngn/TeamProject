@@ -13,5 +13,6 @@
   </environments>
   <mappers>
   	<mapper resource="mybatis/mapper/bbs.xml"/>
+  	<mapper resource="mybatis/mapper/reg.xml"/>
   </mappers>
 </configuration>
