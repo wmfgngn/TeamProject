@@ -87,6 +87,26 @@ public class BbsDAO {
 		
 		
 	}
+	
+	// 글삭제
+	public static boolean delBbs(String b_idx) {
+		boolean value = false;
+		
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		int cnt = ss.selectOne("bbs.del",b_idx);
+		
+		if(cnt>0) {
+			value = true;
+			ss.commit();
+		}else{
+			ss.rollback();
+		}
+		
+		ss.close();
+		
+		return value;
+	}
 
 }
 
