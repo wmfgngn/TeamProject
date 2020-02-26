@@ -16,7 +16,7 @@
 <body>
 	
 	<div>
-	<form>
+	<form action="control?type=reg" name="frm">
 		<table summary="회원정보를 모두 입력하세요">
 		
 			<caption>
@@ -89,21 +89,35 @@
 					</select>
 					</td>
 			</tr>
+			
+			<tr>
+				<td>
+					<input type="button" value="가입" id="regist_btn"/>
+				</td>
+			</tr>
 		</table>
-			<%--으갸갸갸 --%>
 			
 		</form>
+		<!--
 		<a href="javascripot:registry_ok(this.form)">
-			<img src ="imges/registry_yet.png" onmouseover="this.src='imges/registy_ok.png'" onmouseout="this.src='imges/registry_yet.png'" alt="회원가입 마우스 올릴떄 변경"/>
-		</a>
+			 <img src ="imges/registry_yet.png" onmouseover="this.src='imges/registy_ok.png'" onmouseout="this.src='imges/registry_yet.png'" alt="회원가입 마우스 올릴떄 변경"/> 
+		</a>-->
+		
+		
 			
 	</div>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script>
 		
+	$(function(){
 		
-		function registry_ok(){
-			
-		}
+		$("#regist_btn").bind("click",function(){
+			alert("가입완료");
+			document.frm.submit();
+		});
+		
+	});
+		
 	</script>
 </body>
 </html>
