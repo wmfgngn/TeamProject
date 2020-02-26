@@ -34,11 +34,11 @@
 			<!-- ID -->
 			<tr>
 				<td>ID:</td>
+				
 			</tr>
 			<tr>
 				<td>
 					<input type="text" id="s_id" name="s_id" placeholder="영문숫자로 입력하세요" style="width:450px;height:50px;font-size:30px;"/>
-					<div id="box"></div>
 				</td>
 			</tr>
 			<!-- PW -->
