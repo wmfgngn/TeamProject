@@ -85,43 +85,42 @@
 			<button type=button id="copy_bt" name="copy">복사</button>
 			<!-- 해당 게시글이 속해있는 게시판 목록으로 갈 수 있는 링크 -->
 			<lable id="lb"></lable>
-			<a href="">해당 게시판 목록</a>
+			<a href="control?type=list&reqnum=<%=reqnum%>">해당 게시판 목록</a>
 		</div>
 		<div id="content">
 			<table id="ct">
 				<thead id="thd">
 					<tr>
-						<th><span class="sp">닉네임<%=vo.getWriter() %></span></th>
-						<th>작성일<%=vo.getWrite_date() %></th>
-						<th>조회: <span class="sp">조회수<%=vo.getHit() %></span></th>
-						<th>추천: <span class="sp">추천수<%=vo.getRecommend() %></span></th>
+						<th><span class="sp"><%=vo.getWriter() %></span></th>
+						<th><%=vo.getWrite_date() %></th>
+						<th>조회: <span class="sp"><%=vo.getHit() %></span></th>
+						<th>추천: <span class="sp"><%=vo.getRecommend() %></span></th>
 					</tr>
 				</thead>
 				<tbody id="tbd">
 					<tr>
-						<td>[카테고리<%=vo.getKategorie() %>]</td>
+						<td>[<%=vo.getKategorie() %>]</td>
 						<td class="mv" colspan="3"><a href="Bbs_List.jsp">목록</a>｜<a href="#ans">댓글</a></td>
 					</tr>
 					<tr>
-						<td id="title" colspan="4">제목<%=vo.getSubject() %></td>
+						<td id="title" colspan="4"><%=vo.getSubject() %></td>
 					</tr>
 					<tr>
-						<td colspan="4">내용<%=vo.getContent() %></td>
+						<td colspan="4"><%=vo.getContent() %></td>
 					</tr>
 					<tr>
 						<td colspan="4"><button type="button" id="best" onclick="best()">추천</button></td>
 					</tr>
-					<tr>
 					<%
 					if(rvo != null) {
 					if(vo.getRvo().getR_idx().equals(rvo.getR_idx())){
 					%>
-						<td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>')">삭제</button></td>
+					<tr><td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>')">삭제</button></td></tr>
 					<% }
 					}%>
-					</tr>
 				</tbody>
 			</table>
+			<hr/>
 			<table id="ans">
 <%
 	List<CommVO> c_list = vo.getC_list();
@@ -141,14 +140,17 @@
 		}//for의 끝
 	}else{
 		response.sendRedirect("control");
+	}
 %>
-			</table>
+	<tr>
+		<td colspan="3"><input type="text" id="ans_tt" name="ans_tt"></td>
+		<td><button type="button" id="ans_add">등록</button></td>
+	</tr>
+</table>
 	<hr/>
 	</div>
 	</div>
-<%
-	}
-%>
+
 	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script>
 	$(function(){
