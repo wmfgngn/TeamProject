@@ -3,15 +3,14 @@ package project.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mybatis.dao.BbsDAO;
-import project.vo.BbsVO;
-import project.vo.PageVO;
-
-public class MainAction implements Action {
+public class LoginAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		return "/jsp/main.jsp";
+		// 해야할일...
+		//그냥 로그인 화면 이동 으오오오아아아아
+		
+		return "/jsp/login.jsp";
 	}
 
 }

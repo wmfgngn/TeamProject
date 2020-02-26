@@ -14,9 +14,13 @@
 </style>
 </head>
 <body>
+
+	<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
+	
 	
 	<div>
-	<form action="control?type=reg" name="frm">
+	<form action="control?type=regist" name="frm" method="post">
 		<table summary="회원정보를 모두 입력하세요">
 		
 			<caption>
@@ -82,8 +86,8 @@
 			</tr>
 			<tr>
 			<td>
-				<select id="s_phone" name="s_phone" style="width:450px;height:50px;font-size:30px;">
-			<option value="gender">성별</option>
+				<select id="s_phone" name="s_gender" style="width:450px;height:50px;font-size:30px;">
+			<option>성별</option>
 			<option value="M">남자</option>
 			<option value="W">여자</option>
 					</select>
@@ -110,12 +114,9 @@
 	<script>
 		
 	$(function(){
-		
 		$("#regist_btn").bind("click",function(){
-			alert("가입완료");
-			document.frm.submit();
+			frm.submit();
 		});
-		
 	});
 		
 	</script>
