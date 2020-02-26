@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/summernote-lite.css"/>
 <style type="text/css">
 	#bbs table {
-	    width:580px;
+	    width:780px;
 	    margin:0 auto;
 	    border:1px solid black;
 	    border-collapse:collapse;
@@ -112,8 +112,8 @@
 	<script>
 	$(function(){
 		$("#content").summernote({
-			heigth:500,
-			width:454,
+			height:300,
+			width:580,
 			lang: "ko-KR",
 			callbacks:{ // 특정한 상황에 자동으로 호출하는
 				onImageUpload: function(files, editor){
