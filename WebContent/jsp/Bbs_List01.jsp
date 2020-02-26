@@ -4,9 +4,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    
-<%------------------------------------------------------- 공지 게시판 -------------------------------------------------------%>
-
+<%
+	// ******************************************************************************************
+	PageVO pvo = null;
+	BbsVO[] ar = null;
+	Object obj01 = request.getAttribute("page");	// 페이징 기법관련 객체
+	Object obj02 = request.getAttribute("ar");		// 한 페이지에 표시될 게시물 리스트
+	if(obj01 != null) {
+		pvo = (PageVO)obj01;
+	}
+	if(obj02 != null) {
+		ar = (BbsVO[])obj02;
+	}
+	
+	String reqnum = request.getParameter("reqnum");
+	
+	session.setAttribute("page", pvo);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -23,8 +37,25 @@
 
 <div id="warp">
 	<div id="bbs">
-		<table summary="공지사항">
-			<caption>공지사항</caption>
+	<%
+	String str = "";
+	switch(Integer.parseInt(reqnum)) {
+	case 1 :
+		str="공지사항";
+		System.out.println(str);
+		break;
+	case 2 :
+		str="자유게시판";
+		System.out.println(str);
+		break;
+	case 3 :
+		str="팁게시판";
+		System.out.println(str);
+		break;
+	}
+	%>
+		<h1><%=str %></h1>
+		<table summary="<%=str%>">
 			<thead>
 				<tr>
 					<td colspan="6" style="text-align:right;"><input type="button" value="글쓰기"/></td>
@@ -38,23 +69,7 @@
 					<th class="recomnum">추천</th>
 				</tr>
 			</thead>
-<%
-	// ******************************************************************************************
-	PageVO pvo = null;
-	BbsVO[] ar = null;
-	Object obj01 = request.getAttribute("page");	// 페이징 기법관련 객체
-	Object obj02 = request.getAttribute("ar");		// 한 페이지에 표시될 게시물 리스트
-	if(obj01 != null) {
-		pvo = (PageVO)obj01;
-	}
-	if(obj02 != null) {
-		ar = (BbsVO[])obj02;
-	}
-	
-	String requnum = request.getParameter("reqnum");
-	
-	session.setAttribute("page", pvo);
-%>
+
 			<tfoot>
 				<tr>
                 	<td colspan="5">
@@ -83,7 +98,7 @@
                         </ol>
 					</td>
 					<td style="border-left: none;">
-						<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>'&reqnum=<%=requnum%>"/>
+						<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>'&reqnum=<%=reqnum%>"/>
 					</td>
 				</tr>
 			</tfoot>

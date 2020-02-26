@@ -12,6 +12,24 @@ import project.vo.RegVO;
 
 public class BbsDAO {
 	
+	public static BbsVO[] getList(int begin, int end, String reqnum) {
+		BbsVO[] ar = null;
+		SqlSession ss = FactoryService.getFactory().openSession();
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", begin);
+		map.put("end", end);
+		map.put("reqnum", Integer.parseInt(reqnum));
+		List<BbsVO> list = ss.selectList("bbs.bbslist", map);
+		
+		if(list.size() > 0) {
+			ar = new BbsVO[list.size()];
+			ar = list.toArray(ar);
+		}
+		ss.close();
+		return ar;
+	}
+	
 	public static int getTotalCount() {
 		SqlSession ss = FactoryService.getFactory().openSession();
 		//int cnt = ss.selectOne("bbs.totalCount");

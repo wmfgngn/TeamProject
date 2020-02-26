@@ -11,7 +11,7 @@ public class ListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		String path = null;
+		String path = "/jsp/Bbs_List01.jsp";
 		PageVO page = new PageVO();	// 한 페이지당 보여지는 게시물 수 (2), 페이지 묶음 (5) >> 기본 값
 		String reqnum = request.getParameter("reqnum");
 		if (reqnum == null) {
@@ -30,27 +30,14 @@ public class ListAction implements Action {
 		} else {
 			page.setNowPage(page.getNowPage());
 		}
-		//BbsVO[] ar = BbsDAO.getList(page.getBegin(), page.getEnd());
-		BbsVO[] ar = null;
+		
+		BbsVO[] ar = BbsDAO.getList(page.getBegin(), page.getEnd(), reqnum);
 		request.setAttribute("ar", ar);
 		request.setAttribute("page", page);
 		
 		PageVO pvo = (PageVO)request.getAttribute("page");
 		System.out.println("nowpage : " + pvo.getNowPage());
 		
-		// 공지, 자유, 팁
-		switch(reqnum) {
-			case "1":
-				path = "/jsp/Bbs_List01.jsp";
-				break;
-			case "2":
-				path = "/jsp/Bbs_List02.jsp";
-				break;
-			case "3":
-				path = "/jsp/Bbs_List03.jsp";
-				break;
-			default:
-		}
 		return path;
 	}
 
