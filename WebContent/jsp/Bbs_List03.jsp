@@ -3,6 +3,11 @@
 <%@page import="mybatis.dao.BbsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        
+    
+<%------------------------------------------------------- 팁 게시판 -------------------------------------------------------%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +23,8 @@
 
 <div id="warp">
 	<div id="bbs">
-		<table summary="게시판 목록">
-			<caption>게시판 목록</caption>
+		<table summary="팁 게시판">
+			<caption>팁 게시판</caption>
 			<thead>
 				<tr>
 					<td colspan="6" style="text-align:right;"><input type="button" value="글쓰기"/></td>

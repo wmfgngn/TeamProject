@@ -11,7 +11,7 @@ public class ListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
+		String path = null;
 		PageVO page = new PageVO();	// 한 페이지당 보여지는 게시물 수 (2), 페이지 묶음 (5) >> 기본 값
 		
 		// 페이징기법 변수 설정
@@ -33,7 +33,21 @@ public class ListAction implements Action {
 		
 		PageVO pvo = (PageVO)request.getAttribute("page");
 		System.out.println("nowpage : " + pvo.getNowPage());
-		return "/jsp/Bbs_List.jsp";
+		
+		// 공지, 자유, 팁
+		switch(request.getParameter("reqnum")) {
+			case "1":
+				path = "/jsp/Bbs_List01.jsp";
+				break;
+			case "2":
+				path = "/jsp/Bbs_List02.jsp";
+				break;
+			case "3":
+				path = "/jsp/Bbs_List03.jsp";
+				break;
+			default:
+		}
+		return path;
 	}
 
 }
