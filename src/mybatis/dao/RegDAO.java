@@ -45,7 +45,15 @@ public class RegDAO {
 		ss.close();
 		return chk;
 	}
-	
+	// 가입완료 된 멤버 아이디로 찾기 
+	public static RegVO search(String id) {
+		SqlSession ss = FactoryService.getFactory().openSession();
+		 
+		RegVO vo = ss.selectOne("reg.member",id);
+		ss.close();
+		
+		return vo;
+	}
 
 	
 }
