@@ -49,5 +49,13 @@
 		values(#{type}, bbs_t_seq.NEXTVAL, #{subject}, #{writer}, #{content}, sysdate, #{ip}, 0, #{file_name}, 0, #{ori_name}, #{pwd}, 0, #{kategorie})
 	</insert>
 	
+	<!-- 글 삭제 -->
+	<update id="del" parameterType="String">
+		update inven_bbs
+		set
+			status = 1
+		where b_idx = #{b_idx}
+	</update>
+	
 	
 </mapper>
