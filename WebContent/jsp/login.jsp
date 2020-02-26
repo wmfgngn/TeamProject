@@ -11,76 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     <link rel="stylesheet" href="../css/sb-admin-2.min.css"/>
     <link rel="stylesheet" href="../css/fontawesome/all.min.css"/>
+    <link rel="stylesheet" href="css/loginStyle.css"/>
 <title>Login</title>
-<style>
-	#bodyMain{
-		width: 990px;
-		height: 800px;
-		margin: 100px auto;
-	}
-	#toMain{
-		display:inline-block;
-		width: 495px;
-		height: 250px;
-	}
-	
-	#toMain>a {
-		display:inline-block;
-		width: 495px;
-		height: 250px;
-		line-height: 100%;
-		text-align: center;
-	}
-	#leftPart{
-		display: inline;
-		width: 495px;
-		height: 700px;
-		float: left;
-	}
-	#rightPart{
-		display: inline;
-		width: 495px;
-		height: 700px;
-		float: left;
-	}
-	#invenFoot{
-		display:inline-block;
-		margin: 0 auto;
-	}
-	#s_id {
-		margin-left: 100px;
-		width: 300px;
-	}
-	#s_pw {
-		margin-left: 100px;
-		width: 300px;
-	}
-	#loginBtn{
-		margin-left: 100px;
-		width: 300px;
-	}
-	#airbnb{
-		color: #FCDE48;
-	}
-	.btn-group{
-		margin-left: 100px;
-		margin-bottom: 50px;
-		width: 300px;
-	}
-	.gftbtn{
-		display:inline-block;
-		width:300px;
-		margin-left: 100px;
-		margin-bottom: 5px;
-	}
-	.userMenu{
-		width:300px;
-		margin-left: 100px;
-		text-align: center;
-	}
-	
 
-</style>
 </head>
 <jsp:include page="header.jsp"/>
 <jsp:include page="menu.jsp"/>
