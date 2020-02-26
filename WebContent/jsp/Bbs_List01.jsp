@@ -98,7 +98,7 @@
                         </ol>
 					</td>
 					<td style="border-left: none;">
-						<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>'&reqnum=<%=reqnum%>"/>
+						<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>&reqnum=<%=reqnum%>'"/>
 					</td>
 				</tr>
 			</tfoot>
