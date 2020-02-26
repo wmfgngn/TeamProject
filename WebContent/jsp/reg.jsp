@@ -12,14 +12,16 @@
 		text-align: center;
 	}	
 </style>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/main.css"/>
+<script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
 	<jsp:include page="header.jsp"/>
 	<jsp:include page="menu.jsp"/>
 	
-	
-	<div>
+	<div id="warp">
 	<form action="control?type=regist" name="frm" method="post">
 		<table summary="회원정보를 모두 입력하세요">
 		
@@ -86,12 +88,9 @@
 			</tr>
 			<tr>
 			<td>
-				<select id="s_phone" name="s_gender" style="width:450px;height:50px;font-size:30px;">
-			<option>성별</option>
-			<option value="M">남자</option>
-			<option value="W">여자</option>
-					</select>
-					</td>
+				<input type="radio" name="s_gender" value="M" checked="checked"/>남자 
+				<input type="radio" name="s_gender" value="W"/>여자 
+			</td>
 			</tr>
 			
 			<tr>
@@ -102,10 +101,6 @@
 		</table>
 			
 		</form>
-		<!--
-		<a href="javascripot:registry_ok(this.form)">
-			 <img src ="imges/registry_yet.png" onmouseover="this.src='imges/registy_ok.png'" onmouseout="this.src='imges/registry_yet.png'" alt="회원가입 마우스 올릴떄 변경"/> 
-		</a>-->
 	</div>
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<script>
@@ -134,6 +129,17 @@
 				$("#s_name").focus();
 				return;
 			}
+			if($("#s_phone2").val().trim().length < 3) {
+				alert("전화번호를 확인하세요!");
+				$("#s_phone2").focus();
+				return;
+			}
+			if($("#s_phone3").val().trim().length < 4) {
+				alert("전화번호를 확인하세요!");
+				$("#s_phone3").focus();
+				return;
+			}
+			
 			alert("가입완료");
 			frm.submit();
 		});
