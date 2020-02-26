@@ -5,7 +5,7 @@
  <% 
     //사용자가 입력한 id 값을 받아서 해당 id로 된 정보가 이는지를 알아낸다.
     
-    String id = request.getParameter("id");
+    String id =request.getParameter("id");
     
  	RegVO vo = RegDAO.search(id);
  
