@@ -34,11 +34,11 @@
 			<!-- ID -->
 			<tr>
 				<td>ID:</td>
-				
 			</tr>
 			<tr>
 				<td>
 					<input type="text" id="s_id" name="s_id" placeholder="영문숫자로 입력하세요" style="width:450px;height:50px;font-size:30px;"/>
+					<div id="box"></div>
 				</td>
 			</tr>
 			<!-- PW -->
@@ -115,8 +115,54 @@
 		
 	$(function(){
 		$("#regist_btn").bind("click",function(){
+			var id = $("#s_id").val().trim();
+			var pw = $("#s_pw").val().trim();
+			var pw_ok = $("s_pw_ok").val.trim();
+			var name = $("s_name").val.trim();
+			
+			//유효성 검사 
+			
+			if(id.length <1){
+				alert("아이디 입력하세요 ^^");
+				$("#s_id").focus();
+				return;
+			}
+			if(pw.length != pw_ok.length){
+				alert("비밀번호를 확인하세요^^");
+				$("#s_pw").focus();
+				return;
+			}
+			if(name.length <1){
+				alert("이름을 입력하세요!");
+				$("#s_name").focus();
+				return;
+			}
+			alert("가입완료");
 			frm.submit();
 		});
+		
+		$("#s_id").on("keyup",function(){
+			
+			var str = $(this).val();
+			
+			if(str.trim().length > 3){
+				$.ajax({
+					url:"idok.jsp",
+					type:"post",
+					data:"id="+encodeuRIComponent(str)
+				}).done(function(data){
+					$("#box").html("사용가능합니다.");
+				}).fail(function(err){
+					consol.log(err);
+				});
+			}else{
+				$("#box").html("ID중복");
+			}
+			
+		});
+		
+		
+		
 	});
 		
 	</script>
