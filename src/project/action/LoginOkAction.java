@@ -14,7 +14,7 @@ public class LoginOkAction implements Action {
 		String s_id = request.getParameter("s_id");
 		String s_pw = request.getParameter("s_pw");
 		boolean res = false;
-		System.out.println(s_id+"/"+s_pw);
+		//System.out.println(s_id+"/"+s_pw);
 		RegVO vo = BbsDAO.login(s_id, s_pw);
 		if(vo != null) {
 			res = true;

@@ -19,7 +19,7 @@
 <jsp:include page="menu.jsp"/>
 <body id="bodyMain" class="" style="">
 	<div id="leftPart">
-		<p>여기 그냥 간지용 이미지</p>
+		
 	</div>
 	<div id="rightPart"> 
 	<div id="toMain">
@@ -88,7 +88,7 @@
 			$("#loginBtn").bind("click", function(){
 				var s_id = $("#s_id").val();
 				var s_pw = $("#s_pw").val();
-				console.log(s_id);
+				//console.log(s_id);
 				var param = "s_id="+encodeURIComponent(s_id)+
 					"&s_pw="+encodeURIComponent(s_pw);
 				
@@ -101,7 +101,7 @@
 					if(data.res == "true")
 						location.href = "control?type=main";
 					else{
-						alert("!");
+						alert("아이디 및 비밀번호를 확인하세요!");
 					}
 				}).fail(function(err){
 					

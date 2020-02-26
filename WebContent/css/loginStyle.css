@@ -23,6 +23,7 @@
 		width: 495px;
 		height: 700px;
 		float: left;
+		background-image: url( "../images/michael.png" );
 	}
 	#rightPart{
 		display: inline;
