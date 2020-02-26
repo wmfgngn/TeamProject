@@ -11,7 +11,7 @@ public class ListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		String path = "/jsp/Bbs_List01.jsp";
+		String path = null;
 		PageVO page = new PageVO();	// 한 페이지당 보여지는 게시물 수 (2), 페이지 묶음 (5) >> 기본 값
 		String reqnum = request.getParameter("reqnum");
 		if (reqnum == null) {
@@ -19,8 +19,8 @@ public class ListAction implements Action {
 		}
 		
 		// 페이징기법 변수 설정
-		page.setTotalRecord(BbsDAO.getTotalCount());	// 총 게시물 수 (1), 전체 페이지 수 (3)
-		
+		page.setTotalRecord(BbsDAO.getTotalCount(Integer.parseInt(reqnum)));	// 총 게시물 수 (1), 전체 페이지 수 (3)
+		System.out.println("게시물 수 : " + page.getTotalRecord());
 		// 현재 페이지값 초기화 (4)
 		String cPage = request.getParameter("cPage");
 		if (cPage != null) {
@@ -38,6 +38,18 @@ public class ListAction implements Action {
 		PageVO pvo = (PageVO)request.getAttribute("page");
 		System.out.println("nowpage : " + pvo.getNowPage());
 		
+		switch(reqnum) {
+		case "1":
+			path = "/jsp/Bbs_List01.jsp";
+			break;
+		case "2":
+			path = "/jsp/Bbs_List02.jsp";
+			break;
+		case "3":
+			path = "/jsp/Bbs_List03.jsp";
+			break;
+			
+		}
 		return path;
 	}
 

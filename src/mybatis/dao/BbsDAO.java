@@ -21,7 +21,7 @@ public class BbsDAO {
 		map.put("end", end);
 		map.put("reqnum", Integer.parseInt(reqnum));
 		List<BbsVO> list = ss.selectList("bbs.bbslist", map);
-		
+
 		if(list.size() > 0) {
 			ar = new BbsVO[list.size()];
 			ar = list.toArray(ar);
@@ -30,11 +30,11 @@ public class BbsDAO {
 		return ar;
 	}
 	
-	public static int getTotalCount() {
+	public static int getTotalCount(int reqnum) {
 		SqlSession ss = FactoryService.getFactory().openSession();
-		//int cnt = ss.selectOne("bbs.totalCount");
+		int cnt = ss.selectOne("bbs.totalCount", reqnum);
 		ss.close();
-		return 0;
+		return cnt;
 	}
 	
 	// View DAO

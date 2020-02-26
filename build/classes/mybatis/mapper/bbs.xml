@@ -5,9 +5,10 @@
 <mapper namespace="bbs">
 
 	<!-- 페이징 기법에 사용될 전체페이지 수를 구하기 위해 전체 게시물 수 구하기 -->
-	<select id="totalCount" resultType="int">
-		SELECT count(*) from bbs_t
+	<select id="totalCount" resultType="int" parameterType="int">
+		SELECT count(*) from inven_bbs
 		WHERE status = 0
+		AND type = #{reqnum}
 	</select>
 	<!--******************************-->
 	
@@ -20,19 +21,19 @@
 
 	<!-- 특정 글의 기본키를 조건으로 글의 댓글을 조회 -->	
 	<select id="com" resultType="project.vo.CommVO" parameterType="String">
-		SELECT * FROM comment_t
+		SELECT * FROM inven_comment
 		WHERE b_idx = #{b_idx}
 		ORDER BY c_idx
 	</select>
 
 	<select id="bbslist" resultMap="map" parameterType="java.util.Map">
 		SELECT * FROM (SELECT rownum r_num, a.*
-						FROM (SELECT * FROM bbs_t
+						FROM (SELECT * FROM inven_bbs
 							  WHERE status = 0
+							  and type = #{reqnum}
 							  ORDER BY b_idx DESC) a
 		)
-		WHERE r_num BETWEEN #{begin} AND #{end}
-		AND type = #{reqnum}
+		WHERE r_num BETWEEN #{begin} AND #{end} 
 	</select>
 	<!--******************************-->
 	
