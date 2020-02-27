@@ -62,16 +62,18 @@
 </style>
 </head>
 <%
-	Object obj = request.getAttribute("vo");
+	Object obj = session.getAttribute("vo");
 	Object obj2 = session.getAttribute("loVo");
 	Object reqnum = session.getAttribute("reqnum");
 	RegVO rvo = null;
+	BbsVO vo = null;
 	
 	if(obj2 != null) {
 		rvo = (RegVO)session.getAttribute("loVo");
 	}
 	if(obj != null) {
-		BbsVO vo = (BbsVO)obj;
+		vo = (BbsVO)session.getAttribute("vo");
+		System.out.println("글번호:" + vo.getB_idx());
 %>
 
 <body>
@@ -145,7 +147,7 @@
 %>
 <form action="control?type=com" method="post" name="c_frm">
 	<input type="text" id="ans_tt" name="ans_tt">
-	<input type="hidden" name="b_idx" value='<%=vo.getB_idx()%>'>
+	<input type="hidden" name="b_idx" >
 	<input type="button" id="ans_add" value="등록"/>
 </form>
 	<hr/>
@@ -164,6 +166,7 @@
 		var ad = (url);
 		
 		$("#ans_add").bind("click", function(){
+			c_frm.b_idx.value = '<%=vo.getB_idx()%>'; 
 			c_frm.submit();
 		});
 

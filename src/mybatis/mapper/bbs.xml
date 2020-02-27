@@ -48,6 +48,7 @@
 	
 	<!-- 기본키(b_idx)를 이용한 특정글 조회 -->
 	<resultMap type="project.vo.BbsVO" id="rvomap">
+		<id column="b_idx" property="b_idx"/>
 		<!-- 1:1 관계(has-a)를 가진 EmpVO의 dvo에 객체를 전달 / n:m 관계는 collection -->		
 		<association property="rvo" javaType="project.vo.RegVO"
 			select="get_rvo" column="r_idx" />

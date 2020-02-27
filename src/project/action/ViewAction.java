@@ -18,7 +18,7 @@ public class ViewAction implements Action {
 		String b_idx = request.getParameter("b_idx");
 		
 		BbsVO vo = BbsDAO.view(b_idx);
-		
+		System.out.println("viewaction bidx : " + vo.getB_idx());
 		HttpSession session = request.getSession();
 		
 		Object obj = session.getAttribute("read_bbs");
@@ -47,9 +47,10 @@ public class ViewAction implements Action {
 				BbsDAO.hit(b_idx);
 				list.add(vo);
 			}
-			request.setAttribute("vo", vo);
-			request.setAttribute("cPage", cPage);
 		}
+		request.setAttribute("vo", vo);
+		session.setAttribute("vo", vo);
+		request.setAttribute("cPage", cPage);
 		return "/jsp/view.jsp";
 	}
 
