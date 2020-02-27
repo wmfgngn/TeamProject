@@ -36,6 +36,9 @@
 	    border:1px solid black;
 	    padding:4px 10px;
 	}
+	#writer{
+		background-color: #dedede;
+	}
 	
 	.no {width:15%}
 	.subject {width:30%}
@@ -69,7 +72,7 @@
 				</tr>
 				<tr>
 					<th>이름:</th>
-					<td><input type="text" name="writer" size="12" value="<%=vo.getS_name()%>"/></td>
+					<td><input type="text" id="writer" name="writer" size="12" value="<%=vo.getS_name()%>" readonly/></td>
 				</tr>				
 				<tr>
 					<th>첨부파일:</th>

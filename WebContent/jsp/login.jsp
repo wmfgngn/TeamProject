@@ -64,9 +64,9 @@
 
 				<div id="sns-provider">
 					<div class="sns-login half">
-						<a href="" class="btn btn-danger gftbtn"><i class="fab fa-google"></i>&nbsp;Google 로그인</a><br/>
-						<a href="" class="btn btn-success gftbtn"><i class="fab fa-twitter"></i>&nbsp;Twitter 로그인</a><br/>
-						<a href="" class="btn btn-primary gftbtn"><i class="fab fa-facebook"></i>&nbsp;Facbook 로그인</a>
+						<a href="https://accounts.google.com/ServiceLogin/signinchooser?hl=ko&passive=true&continue=https%3A%2F%2Fwww.google.com%2F&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn btn-danger gftbtn"><i class="fab fa-google"></i>&nbsp;Google 로그인</a><br/>
+						<a href="https://twitter.com/login/error?redirect_after_login=%2F" class="btn btn-success gftbtn"><i class="fab fa-twitter"></i>&nbsp;Twitter 로그인</a><br/>
+						<a href="https://www.facebook.com/" class="btn btn-primary gftbtn"><i class="fab fa-facebook"></i>&nbsp;Facbook 로그인</a>
 					</div>
 				</div>
 
