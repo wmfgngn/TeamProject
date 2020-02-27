@@ -92,7 +92,6 @@ public class MyController extends HttpServlet {
 			type = "main";
 		}
 
-
 		// type의 값은 actionMap의 key로 사용
 		Action action = actionMap.get(type);
 

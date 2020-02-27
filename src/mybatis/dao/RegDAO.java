@@ -91,5 +91,21 @@ public class RegDAO {
 				ss.close();
 			return chk;	
 		}
+	//아이디 
+	public static RegVO findId(String idPhone, String idName) {
+			RegVO vo = null;
+			SqlSession ss = FactoryService.getFactory().openSession();
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("idPhone", idPhone);
+			map.put("idName", idName);
+			
+			vo = ss.selectOne("reg.findId", map);
+			
+			if(vo != null) {
+				ss.close();
+			}
+			
+			return vo;
+		}
 	
 }
