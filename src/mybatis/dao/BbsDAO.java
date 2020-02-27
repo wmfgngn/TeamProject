@@ -130,6 +130,7 @@ public class BbsDAO {
 			
 			return chk;
 		}
+	
 		
 	// 게시물 수정
 		public static void viewEdit(Map<String,String> map) {
@@ -146,7 +147,22 @@ public class BbsDAO {
 			
 		}
 		
-
+	// 댓글 삭제 
+		public static boolean c_del(String b_idx) {
+			boolean chk = false;
+			
+			SqlSession ss = FactoryService.getFactory().openSession();
+			int cnt = ss.update(b_idx);
+			if(cnt>0) {
+				chk = true;
+				ss.commit();
+			}else{
+				ss.rollback();
+			}
+			
+			ss.close();
+			return chk;
+		}
 }
 
 
