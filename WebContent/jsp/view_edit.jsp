@@ -1,3 +1,4 @@
+<%@page import="project.vo.BbsVO"%>
 <%@page import="project.vo.RegVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -57,8 +58,14 @@
 <%
 	String cPage = (String)request.getAttribute("cPage");
 	String reqnum = (String)request.getAttribute("reqnum");
+	String b_idx = (String)request.getAttribute("b_idx");
+	Object obj = session.getAttribute("vo");
 	RegVO vo = (RegVO)session.getAttribute("loVo");
 	//System.out.println(reqnum+"하하");
+	BbsVO bvo = null;
+	if(obj != null){
+		bvo = (BbsVO)obj;
+	
 %>
 	<div id="bbs">
 	<form action="control?type=view_edit" method="post" 
@@ -68,7 +75,7 @@
 			<tbody>
 				<tr>
 					<th>제목:</th>
-					<td><input type="text" name="subject" size="45"/></td>
+					<td><input type="text" name="subject" size="45" value="<%=bvo.getSubject() %>"/></td>
 				</tr>
 				<tr>
 					<th>이름:</th>
@@ -76,7 +83,7 @@
 				</tr>				
 				<tr>
 					<th>첨부파일:</th>
-					<td><input type="file" name="file"/></td>
+					<td><input type="file" name="file"/><%=bvo.getOri_name() %></td>
 				</tr>
 			
 			</tbody>
@@ -84,6 +91,7 @@
 		<input type="hidden" name="str" id="str"/>
 		<input type="hidden" name="reqnum" value="<%= reqnum%>">
 		<input type="hidden" name="pwd" value="<%=vo.getS_pw() %>">
+		<input type="hidden" name="b_idx" value="<%=b_idx %>">
 	</form>
 	
 		<table>
@@ -91,7 +99,7 @@
 				<tr>
 					<th style="width:100px;">내용:</th>
 					<td><textarea id="content" name="content" cols="50" 
-							rows="8"></textarea></td>
+							rows="8"><%=bvo.getContent() %></textarea></td>
 				</tr>
 			
 				<tr>
@@ -105,7 +113,9 @@
 			</tbody>		
 		</table>
 	</div>
-	
+<%
+	}
+%>	
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/summernote-lite.js"></script>
 	<script src="js/lang/summernote-ko-KR.min.js"></script>

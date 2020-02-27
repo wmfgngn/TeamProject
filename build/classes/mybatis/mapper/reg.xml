@@ -47,4 +47,11 @@
 		select * from regist_t
 	 	where s_phone = #{idPhone} AND s_name = #{idName}
 	</select>
+	
+	<!-- 추천 증가 -->
+	<update id="recomend" parameterType="String">
+		UPDATE inven_bbs
+		SET recommend = recommend+1
+		WHERE b_idx = #{b_idx}
+	</update>
 </mapper>

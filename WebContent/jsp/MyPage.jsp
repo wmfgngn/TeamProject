@@ -42,21 +42,19 @@
 
 				<tr>
 					<td>비밀번호:</td>
-				</tr>
-				<tr>
-					<td><input type="password" id="s_pw" name="s_pw" value="<%=rvo.getS_pw() %>"
+					<td><input type="hidden" id="s_pw" name="s_pw" value="<%=rvo.getS_pw() %>"
 						placeholder="영문숫자로 4글자 이상 10글자 이하 입력해주세요"
-						style="width: 450px; height: 50px; font-size: 30px;" /></td>
+						 /></td>
 				</tr>
+					
 				<tr>
 					<td>핸드폰 번호:</td>
-				</tr>
-				<tr>
 					<td>
 						<input type="text" id="s_phone" name="s_phone" value="<%=rvo.getS_phone()%>"
-						style="width: 450px; height: 50px; font-size: 30px;"/>
+						/>
 					</td>
 				</tr>
+					
 				<tr>
 				
 				<tr>

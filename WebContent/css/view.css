@@ -1,0 +1,48 @@
+@charset "UTF-8";
+#view{
+		width: 970px;
+		margin: auto;
+	}
+	
+	#adr a{
+		color : gray;
+		text-decoration : none;
+		background-position: 0 -150px;
+		float: right;
+	}
+	
+	#ct{
+		width: 970px;
+		margin: auto;
+	}
+	
+	#thd{
+		margin-top: 5px;
+		height: 40px;
+		border-top: 2px solid #BDBDBD;
+		border-bottom: 1px solid #BDBDBD;
+		border-collapse: 0;
+		line-height: 40px;
+		background-color: #EAEAEA;
+	}
+	
+	#tbd{
+		width: 970px;
+		margin: auto;
+	}
+	
+	.sp{
+		font-weight: normal;
+	}
+	
+	.mv{
+		text-align: right;
+	}
+	
+	#title{
+		height: 100px;
+		margin: 100px;
+		padding: 10px;
+		color: #980000;
+		font-size: 1.5em;
+	}

@@ -135,10 +135,12 @@ public class BbsDAO {
 		public static void viewEdit(Map<String,String> map) {
 			SqlSession ss = FactoryService.getFactory().openSession();
 			
-			int i = ss.update("viewUpdate", map);
+			int i = ss.update("bbs.viewUpdate", map);
 			
 			if(i>0) {
 				ss.commit();
+			}else {
+				ss.rollback();
 			}
 			ss.close();
 			

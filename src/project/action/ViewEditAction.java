@@ -22,6 +22,7 @@ public class ViewEditAction implements Action {
 		String cPage = request.getParameter("cPage");
 		String b_idx = request.getParameter("b_idx");
 		String reqnum = request.getParameter("reqnum");
+		request.setAttribute("b_idx", b_idx);
 		request.setAttribute("cPage", cPage);
 		request.setAttribute("reqnum", reqnum);
 		String c_type = request.getContentType();
@@ -34,11 +35,14 @@ public class ViewEditAction implements Action {
 				MultipartRequest mr = new MultipartRequest(request, path, 1024*1024*5, 
 						"utf-8", new DefaultFileRenamePolicy());
 				
+				String sb_idx = mr.getParameter("b_idx");
+				String sreqnum = mr.getParameter("reqnum");
 				Map<String, String> map = new HashMap<String, String>();
 				map.put("ip",request.getRemoteAddr());
 				map.put("subject",mr.getParameter("subject"));
 				map.put("content",mr.getParameter("str"));
 				map.put("pwd",mr.getParameter("pwd"));
+				map.put("b_idx",sb_idx);
 				
 				File f = mr.getFile("file");
 				
@@ -55,8 +59,9 @@ public class ViewEditAction implements Action {
 				
 				BbsDAO.viewEdit(map);
 				
-				request.setAttribute("thisReqnum", reqnum);
-				viewPath = "control?type=view&cPage="+cPage+"&b_idx="+b_idx;
+				request.setAttribute("thisReqnum", sreqnum);
+				viewPath = null;
+				
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
