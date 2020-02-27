@@ -9,15 +9,20 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="../css/sb-admin-2.min.css"/>
-    <link rel="stylesheet" href="../css/fontawesome/all.min.css"/>
+    <link rel="stylesheet" href="css/sb-admin-2.min.css"/>
+    <link rel="stylesheet" href="css/fontawesome/all.min.css"/>
     <link rel="stylesheet" href="css/loginStyle.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.min.css"/>
 <title>Login</title>
-
+	<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 </head>
-<jsp:include page="header.jsp"/>
-<jsp:include page="menu.jsp"/>
-<body id="bodyMain" class="" style="">
+	
+
+<body>
+
+	<div id="contentwrap">
 	<div id="leftPart">
 		
 	</div>
@@ -71,18 +76,70 @@
 				</div>
 
 				<div class="userMenu">
-					<a href="#" class="findpw ">아이디/비밀번호 찾기</a>
+					<a href="javascript:exe()" class="findpw ">아이디/비밀번호 찾기</a>
 				</div>
 			</div>
 
 		</div>
 	</div>
 	</div>
+	<div id="invenFoot" class="footline" >
+				<address>Copyright ⓒ Inven. All rights reserved.</address>
+	</div>
+	</div>
+	<div id="find_win">
+		<div id="div_findID">
+			<table id="findId">
+			<tbody>
+				<tr>
+					<th>이름:</th>
+					<td><input type="text" name="idName" id="idName" size="20"/>
+					</td>
+				</tr>
+				<tr>
+					<th>전화번호:</th>
+					<td><input type="text" name="idPhone" id="idPhone" size="20" placeholder=" - 를 제외하고 입력하세요 "/>
+					</td>
+				</tr>
+				<tr>
+					<td id="idtd" colspan="2"><input type="button" name="id_btn" id="id_btn" value="아이디 찾기"/></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<hr/>
+		<div id="div_findPW">
+		<table id="findPw">
+			<tbody>
+				<tr>
+					<th>아이디:</th>
+					<td><input type="text" name="pwId" id="pwId" size="20"/>
+					</td>
+				</tr>
+				<tr>
+					<th>전화번호:</th>
+					<td><input type="text" name="pwPhone" id="pwPhone" size="20" placeholder=" - 를 제외하고 입력하세요 "/>
+					</td>
+				</tr>
+				<tr>
+					<td id="pwtd" colspan="2"><input type="button" name="pw_btn" id="pw_btn" value="비밀번호 찾기"/></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>	
 	
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
 	<script>
+		function exe(){
+			$("#find_win").dialog({title: "아이디/비밀번호 찾기"});
+			$("#find_win").dialog({"width": 350, 
+									"height": 450});
+			
+		}
 	
 		
 		$(function(){
@@ -135,6 +192,57 @@
 				
 			}
 			
+			<%-- x버튼 누를때 이벤트 --%>
+			$("#find_win").on("dialogclose", function(event, ui){ 
+				clear();
+			});
+			
+			<%-- 아이디 찾기 --%>
+			$("#id_btn").bind("click", function(){
+				var idPhone = $("#idPhone").val();
+				var idName = $("#idName").val();
+				//console.log(idPhone)
+				
+				var param = "idPhone="+encodeURIComponent(idPhone)+"&nono=0"+"&idName="+encodeURIComponent(idName)
+				
+				console.log(param)
+				
+				$.ajax({
+					url: "control?type=find",
+					type: "post",
+					data: param,
+					dataType: "json"
+				}).done(function(data){
+						alert("아이디는 "+data.res+" 입니다.");
+				}).fail(function(err){
+					
+				});
+			});
+			
+			<%-- 비밀번호 찾기 --%>
+			$("#pw_btn").bind("click", function(){
+				var pwPhone = $("#pwPhone").val();
+				var pwId = $("#pwId").val();
+				//console.log(idPhone)
+				
+				var param = "pwPhone="+encodeURIComponent(pwPhone)+"&nono=1"+"&pwId="+encodeURIComponent(pwId)
+				
+				console.log(param)
+				
+				$.ajax({
+					url: "control?type=find",
+					type: "post",
+					data: param,
+					dataType: "json"
+				}).done(function(data){
+						alert("비밀번호는 "+data.res+" 입니다.");
+				}).fail(function(err){
+					
+				});
+			});
+			
+			
+			
 		});	
 		
 		function saveId(s_id, st){
@@ -164,13 +272,17 @@
 				return undefined;
 			}
 		}
+		
+		function clear(){
+			$("#idName").val("");
+			$("#idPhone").val("");
+			$("#pwId").val("");
+			$("#pwPhone").val("");
+			
+		}
 	</script>
 </body>
-<footer>
-	<div id="invenFoot" class="footline" >
-				<address>Copyright ⓒ Inven. All rights reserved.</address>
-	</div>
-</footer>
+
 </html>
 
 
