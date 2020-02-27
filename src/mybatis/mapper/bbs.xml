@@ -19,11 +19,21 @@
 			select="com" column="b_idx"/>
 	</resultMap>
 
-	<!-- 특정 글의 기본키를 조건으로 글의 댓글을 조회 -->	
-	<select id="com" resultType="project.vo.CommVO" parameterType="String">
+	<!-- 특정 글의 기본키를 조건으로 글의 댓글을 조회 / 댓글 작성자 정보 호출-->
+	<select id="com" resultType="project.vo.CommVO" parameterType="String" resultMap="get_ansrvo">
 		SELECT * FROM inven_comment
 		WHERE b_idx = #{b_idx}
 		ORDER BY c_idx
+	</select>
+	
+	<resultMap type="project.vo.CommVO" id="get_ansrvo">
+		<id column="r_idx" property="r_idx"/>
+		<association property="rvo" javaType="project.vo.RegVO" select="ansrvo" column="r_idx"/>
+	</resultMap>
+	
+	<select id="ansrvo" resultType="project.vo.RegVO" parameterType="String">
+		select * from regist_t
+		where r_idx = #{r_idx}
 	</select>
 
 	<select id="bbslist" resultMap="map" parameterType="java.util.Map">
