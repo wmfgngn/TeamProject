@@ -8,6 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<jsp:include page="header.jsp"/>
+		<jsp:include page="menu.jsp"/>
+	
+	
+		
+		
 	<%	
 		
 		Object obj =session.getAttribute("loVo");
@@ -26,7 +32,8 @@
 			<tbody>
 				<tr>
 					<td>ID:</td>
-					<td><%=rvo.getS_id() %></td>
+					<td><input type="text" id="s_id" name="s_id" value="<%=rvo.getS_id()%>" readonly="readonly"
+					></td>
 				</tr>
 				<tr>
 					<td>이름:</td>
@@ -73,9 +80,8 @@
 		}
 	%>
 	<script src="js/jquery-3.4.1.min.js"></script>
-	<script type="text/javascript">
-		
 	
+	<script type="text/javascript">
 	
 	
 	function goList(loVo){
@@ -91,7 +97,6 @@
 		document.frm.submit();
 	}
 	
-	
-	</script> 
+	</script>  
 </body>
 </html>
