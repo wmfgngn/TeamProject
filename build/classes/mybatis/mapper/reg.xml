@@ -13,8 +13,8 @@
 		VAlUES ( Regist_t_seq.NEXTVAL,#{s_id},#{s_pw},#{s_name},#{s_phone},#{s_gender},0)
 	</insert>
 	<!-- 가입된 멤버 정보 찾기용  -->
-	<select id="member" parameterType="String">
-		select * from reg_t where s_id =#{id}
+	<select id="getid" parameterType="String" resultType="project.vo.RegVO">
+		select * from regist_t where s_id =#{id}
 	</select>
 	<!-- 회원수정 -->
 	<update id="crystal" parameterType="java.util.Map">
@@ -47,4 +47,11 @@
 		select * from regist_t
 	 	where s_phone = #{idPhone} AND s_name = #{idName}
 	</select>
+	
+	<!-- 추천 증가 -->
+	<update id="recomend" parameterType="String">
+		UPDATE inven_bbs
+		SET recommend = recommend+1
+		WHERE b_idx = #{b_idx}
+	</update>
 </mapper>

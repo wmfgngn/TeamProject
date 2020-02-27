@@ -9,59 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-	
-	#view{
-		width: 970px;
-		margin: auto;
-	}
-	
-	#adr a{
-		color : gray;
-		text-decoration : none;
-		background-position: 0 -150px;
-		float: right;
-	}
-	
-	#ct{
-		width: 970px;
-		margin: auto;
-	}
-	
-	#thd{
-		margin-top: 5px;
-		height: 40px;
-		border-top: 2px solid #BDBDBD;
-		border-bottom: 1px solid #BDBDBD;
-		border-collapse: 0;
-		line-height: 40px;
-		background-color: #EAEAEA;
-	}
-	
-	#tbd{
-		width: 970px;
-		margin: auto;
-	}
-	
-	.sp{
-		font-weight: normal;
-	}
-	
-	.mv{
-		text-align: right;
-	}
-	
-	#title{
-		height: 100px;
-		margin: 100px;
-		padding: 10px;
-		color: #980000;
-		font-size: 1.5em;
-	}
-	
-</style>
+<link rel="stylesheet" href="css/view.css"/>
 </head>
 <%
+	String cPage = (String)request.getAttribute("cPage");
 	Object obj = session.getAttribute("vo");
 	Object obj2 = session.getAttribute("loVo");
 	Object reqnum = session.getAttribute("reqnum");
@@ -77,6 +28,8 @@
 %>
 
 <body>
+	<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 	<div id="view">
 		<div id="adr">
 			<!-- 해당 게시글의 주소를 보여주는 버튼 -->
@@ -107,9 +60,21 @@
 					<tr>
 						<td colspan="4"><%=vo.getContent() %></td>
 					</tr>
+			<%
+				if(rvo != null) {
+			%>					
 					<tr>
-						<td colspan="4"><button type="button" id="best" onclick="best()">추천</button></td>
+						<td colspan="4"><button type="button" id="best" onclick="best('<%=rvo.getR_idx()%>', '<%=cPage%>', '<%=vo.getB_idx()%>')">추천</button></td>
 					</tr>
+			<%
+				} else {
+			%>
+					<tr>
+						<td colspan="4"><button type="button" id="best" onclick="alert('로그인 후 이용하세요!');">추천</button></td>
+					</tr>
+			<%
+				}
+			%>
 					<%
 					if(rvo != null) {
 					if(vo.getRvo().getR_idx().equals(rvo.getR_idx())){
@@ -130,7 +95,7 @@
 		c_list = vo.getC_list();
 		for(CommVO cvo : c_list) {
 %>
-			<div id="ans">
+			<div>
 					<%=cvo.getWriter() %>(<%=cvo.getWrite_date() %>)
 					<p><%=cvo.getContent() %></p>
 					<%
@@ -156,6 +121,12 @@
 	<input type="text" id="ans_tt" name="ans_tt">
 	<input type="hidden" name="b_idx" >
 	<input type="button" id="ans_add" value="등록"/>
+</form>
+
+<form action="control?type=rec" method="post" name="r_frm">
+	<input type="hidden" name="b_idx" >
+	<input type="hidden" name="r_idx" >
+	<input type="hidden" name="cPage" >
 </form>
 	<hr/>
 	</div>
@@ -226,7 +197,7 @@
 	}
 	
 	function ans_edit(b_idx){
-	
+		
 	}
 	
 	function view_edit(b_idx){
@@ -240,6 +211,13 @@
 		}).fail(function(err){
 			
 		});
+	}
+	
+	function best(r_idx, cPage, b_idx) {
+		r_frm.r_idx.value = r_idx; 
+		r_frm.b_idx.value = b_idx; 
+		r_frm.cPage.value = cPage; 
+		r_frm.submit();
 	}
 	
 	</script>
