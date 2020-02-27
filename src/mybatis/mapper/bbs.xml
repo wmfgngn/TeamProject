@@ -104,5 +104,40 @@
 		where b_idx = #{b_idx}
 	</update>
 	
+	<!-- 게시글 수정 -->
+	<update id="viewUpdate" parameterType="java.util.Map"> 
+     update inven_bbs
+     <set>
+     	write_date = sysdate,
+        <!-- 가장 마지막에 존재하는 콤마(,)를 잘라낸다. -->
+        <trim suffixOverrides=","><!-- prefixOverrides는 앞에 것을 suffixOverrides는 뒤에 것을 지워준다. -->
+           <if test="subject != null"><!-- map에 title이라는 키가 있을 때 -->
+              subject = #{subject},
+           </if>
+           
+           <if test="content != null">
+              content = #{content},
+           </if>
+           
+           <if test="file_name != null">
+              file_name = #{file_name},
+           </if>
+           
+           <if test="ori_name != null">
+              ori_name = #{ori_name},
+           </if>
+           
+           <if test="ip != null">
+              ip = #{ip},
+           </if>
+           
+           <if test="pwd != null">
+              pwd = #{pwd},
+           </if>
+           
+        </trim>
+     </set>
+     where b_idx = #{b_idx}
+  </update>
 	
 </mapper>

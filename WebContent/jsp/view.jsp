@@ -65,6 +65,7 @@
 	Object obj = session.getAttribute("vo");
 	Object obj2 = session.getAttribute("loVo");
 	Object reqnum = session.getAttribute("reqnum");
+	String cPage = (String)request.getAttribute("cPage");
 	RegVO rvo = null;
 	BbsVO vo = null;
 	
@@ -115,7 +116,7 @@
 					if(vo.getRvo().getR_idx().equals(rvo.getR_idx())){
 					%>
 					<tr><td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>',<%=vo.getB_idx()%>)">삭제</button></td>
-						<td colspan="4"><button type=button id="view_edit" onclick="view_edit('<%=vo.getB_idx()%>')">수정</button></td>
+						<td colspan="4"><button type=button id="view_edit" onclick="javascript:location.href='control?type=view_edit&cPage=<%=cPage%>&reqnum=<%=reqnum%>&b_idx=<%=vo.getB_idx()%>'">수정</button></td>
 					</tr>
 					<% }
 					}%>
@@ -229,18 +230,6 @@
 	
 	}
 	
-	function view_edit(b_idx){
-		$.ajax({
-			url:"control",
-			type:"post",
-			data:"type=view_edit",
-			dataType:"json"
-		}).done(function(data){
-			location.href="control?type=view&b_idx="+b_idx;
-		}).fail(function(err){
-			
-		});
-	}
 	
 	</script>
 </body>

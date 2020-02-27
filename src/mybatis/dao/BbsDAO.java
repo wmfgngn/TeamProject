@@ -130,6 +130,20 @@ public class BbsDAO {
 			
 			return chk;
 		}
+		
+	// 게시물 수정
+		public static void viewEdit(Map<String,String> map) {
+			SqlSession ss = FactoryService.getFactory().openSession();
+			
+			int i = ss.update("viewUpdate", map);
+			
+			if(i>0) {
+				ss.commit();
+			}
+			ss.close();
+			
+		}
+		
 
 }
 
