@@ -70,7 +70,7 @@
 	if(obj2 != null) {
 		rvo = (RegVO)session.getAttribute("loVo");
 	}
-	if(obj != null){
+	if(obj != null) {
 		BbsVO vo = (BbsVO)obj;
 %>
 
@@ -120,44 +120,52 @@
 				</tbody>
 			</table>
 			<hr/>
-			<table id="ans">
+			
 <%
 	Object c_obj = vo.getC_list();
 	List<CommVO> c_list = null;
 	if(c_obj != null){
 		c_list = vo.getC_list();
-		for(CommVO cvo : c_list){
+		for(CommVO cvo : c_list) {
 %>
-				<tr>
-					<td colspan="4">댓글닉네임<%=cvo.getWriter() %>(댓글작성일<%=cvo.getWrite_date() %>)</td>
-				</tr>
-				<tr>
-					<td colspan="4">댓글내용<%=cvo.getContent() %></td>
-				</tr>
-				<tr>
-					<td colspan="4"><button type=button id="ans_del" onclick="ans_del('<%=vo.getB_idx()%>')">삭제</button></td>
-				</tr>
+			<div id="ans">
+					<%=cvo.getWriter() %>(<%=cvo.getWrite_date() %>)
+					<p><%=cvo.getContent() %></p>
+					<button type=button id="ans_del" onclick="ans_del('<%=vo.getB_idx()%>')">삭제</button>
+			</div>
+			<hr>
 <%
+			
 		}//for의 끝
 	}
-	}else{
-		response.sendRedirect("control");
-	}
 %>
-	<tr>
-		<td colspan="3"><input type="text" id="ans_tt" name="ans_tt"></td>
-		<td><button type="button" id="ans_add">등록</button></td>
-	</tr>
-</table>
+	
+<%
+	if(rvo != null) {
+%>
+<form action="control?type=com" method="post" name="c_frm">
+	<input type="text" id="ans_tt" name="ans_tt">
+	<input type="hidden" name="b_idx" value='<%=vo.getB_idx()%>'>
+	<input type="button" id="ans_add" value="등록"/>
+</form>
 	<hr/>
 	</div>
 	</div>
-
-	<script src="../js/jquery-3.4.1.min.js"></script>
+<%
+	}
+}else{
+		response.sendRedirect("control");
+	}
+%>
+	<script src="js/jquery-3.4.1.min.js"></script>
 	<script>
 	$(function(){
 		var url = $(location).attr('href');
 		var ad = (url);
+		
+		$("#ans_add").bind("click", function(){
+			c_frm.submit();
+		});
 
 		$("#adr_bt").bind("click",function(){
 		
@@ -214,9 +222,8 @@
 		}).fail(function(err){
 			
 		});
-		
 	}
-
+	
 	</script>
 </body>
 </html>

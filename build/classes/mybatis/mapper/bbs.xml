@@ -51,6 +51,8 @@
 		<!-- 1:1 관계(has-a)를 가진 EmpVO의 dvo에 객체를 전달 / n:m 관계는 collection -->		
 		<association property="rvo" javaType="project.vo.RegVO"
 			select="get_rvo" column="r_idx" />
+		<collection property="c_list" ofType="project.vo.CommVO"
+			select="com" column="b_idx"/>
 	</resultMap>
 	
 	<select id="get_rvo" resultType ="project.vo.RegVO" parameterType="String">
@@ -62,6 +64,22 @@
 		SELECT * FROM inven_bbs
 		WHERE b_idx = #{b_idx}
 	</select>
+	<!--******************************-->
+	
+	<!-- 댓글 저장 -->
+	<insert id="c_add" parameterType="java.util.Map">
+		INSERT INTO inven_comment
+		VALUES (comment_t_seq.NEXTVAL, #{writer}, #{content}, #{pwd}, SYSDATE, #{ip}, #{b_idx}, #{r_idx})
+	</insert>
+	<!--******************************-->
+	
+	<!-- Update를 이용한 댓글 삭제 -->
+	<update id="c_del" parameterType="java.util.Map">
+		UPDATE bbs_t
+		SET status = '1'
+		WHERE b_idx = #{b_idx}
+		AND	pwd = #{pwd}
+	</update>
 	<!--******************************-->
 	
 	<!-- 조회수 증가 -->
