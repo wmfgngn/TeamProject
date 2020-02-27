@@ -58,7 +58,9 @@
 		<table summary="<%=str%>">
 			<thead>
 				<tr>
-					<td colspan="6" style="text-align:right;"><input type="button" value="글쓰기"/></td>
+					<td colspan="6" style="text-align:right;">
+					<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>&reqnum=<%=reqnum%>'"/>
+					</td>
 				</tr>
 				<tr class="title">
 					<th class="no">번호</th>

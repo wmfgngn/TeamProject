@@ -99,8 +99,7 @@
 				</thead>
 				<tbody id="tbd">
 					<tr>
-						<td>[<%=vo.getKategorie() %>]</td>
-						<td class="mv" colspan="3"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#ans">댓글</a></td>
+						<td class="mv" colspan="4"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#ans">댓글</a></td>
 					</tr>
 					<tr>
 						<td id="title" colspan="4"><%=vo.getSubject() %></td>
@@ -115,7 +114,9 @@
 					if(rvo != null) {
 					if(vo.getRvo().getR_idx().equals(rvo.getR_idx())){
 					%>
-					<tr><td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>')">삭제</button></td></tr>
+					<tr><td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>')">삭제</button></td>
+						<td colspan="4"><button type=button id="view_edit" onclick="view_edit('<%=reqnum%>')">수정</button></td>
+					</tr>
 					<% }
 					}%>
 				</tbody>
@@ -132,7 +133,7 @@
 				</tr>
 				<tr>
 					<td colspan="4">댓글내용<%=cvo.getContent() %></td>
-				</tr>	
+				</tr>
 				<tr>
 					<td colspan="4"><button type=button id="ans_del" onclick="ans_del('<%=vo.getB_idx()%>')">삭제</button></td>
 				</tr>
@@ -199,6 +200,20 @@
 		}).fail(function(err){
 			
 		});
+	}
+	
+	function view_edit(reqnum){
+		$a.jax({
+			url:"control",
+			type:"post",
+			data:"type=view_edit",
+			dataType:"json"
+		}).done(function(data){
+			location.href="control?type=view&b_idx="encodeURIComponent(b_idx);
+		}).fail(function(err){
+			
+		});
+		
 	}
 
 	</script>
