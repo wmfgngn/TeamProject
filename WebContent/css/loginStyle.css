@@ -1,10 +1,6 @@
 @charset "UTF-8";
 
-	#bodyMain{
-		width: 990px;
-		height: 800px;
-		margin: 100px auto;
-	}
+	
 	#toMain{
 		display:inline-block;
 		width: 495px;
@@ -18,21 +14,24 @@
 		line-height: 100%;
 		text-align: center;
 	}
+	#contentwrap{
+		margin: 0 auto;
+		width: 990px;
+		height: 800px;
+	}
 	#leftPart{
-		display: inline;
 		width: 495px;
 		height: 700px;
 		float: left;
 		background-image: url( "../images/michael.png" );
 	}
 	#rightPart{
-		display: inline;
 		width: 495px;
 		height: 700px;
 		float: left;
 	}
 	#invenFoot{
-		display:inline-block;
+		display:block;
 		margin: 0 auto;
 	}
 	#s_id {
@@ -66,3 +65,25 @@
 		margin-left: 100px;
 		text-align: center;
 	}
+
+	footer{
+		display: block;
+		position: absolute;
+		t	
+	}
+	#find_win{
+		display: none;
+	}
+
+	#div_findPW{
+		margin: 50px auto;
+	}
+	
+	#div_findID{
+		margin: 50px auto;
+	}
+	
+	#idtd, #pwtd{
+		text-align: right;
+	}
+	
