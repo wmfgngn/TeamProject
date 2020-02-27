@@ -66,7 +66,7 @@
 	
 	Object obj = request.getAttribute("vo");
 	Object obj2 = session.getAttribute("loVo");
-	String reqnum = request.getParameter("reqnum");
+	Object reqnum = session.getAttribute("reqnum");
 	RegVO rvo = null;
 	
 	if(obj2 != null) {
@@ -100,7 +100,7 @@
 				<tbody id="tbd">
 					<tr>
 						<td>[<%=vo.getKategorie() %>]</td>
-						<td class="mv" colspan="3"><a href="Bbs_List.jsp">목록</a>｜<a href="#ans">댓글</a></td>
+						<td class="mv" colspan="3"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#ans">댓글</a></td>
 					</tr>
 					<tr>
 						<td id="title" colspan="4"><%=vo.getSubject() %></td>

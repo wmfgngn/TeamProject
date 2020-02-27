@@ -2,6 +2,7 @@ package project.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import mybatis.dao.BbsDAO;
 import project.vo.BbsVO;
@@ -50,6 +51,9 @@ public class ListAction implements Action {
 			break;
 			
 		}
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("reqnum", reqnum);
 		return path;
 	}
 
