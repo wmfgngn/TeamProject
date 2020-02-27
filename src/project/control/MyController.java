@@ -86,6 +86,7 @@ public class MyController extends HttpServlet {
 
 		String type = request.getParameter("type");
 		String reqnum = request.getParameter("reqnum");
+		
 		System.out.println("\ntype : " + type);
 		if(type == null) {
 			type = "main";
@@ -96,9 +97,12 @@ public class MyController extends HttpServlet {
 		Action action = actionMap.get(type);
 
 		String viewPath = action.execute(request, response);
-
-		RequestDispatcher disp = request.getRequestDispatcher(viewPath);
-		disp.forward(request, response);
+		if(viewPath != null) {
+			RequestDispatcher disp = request.getRequestDispatcher(viewPath);
+			disp.forward(request, response);
+		}else {
+			response.sendRedirect("control?type=list&reqnum="+request.getAttribute("thisReqnum"));
+		}
 	}
 }
 

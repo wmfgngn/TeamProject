@@ -58,10 +58,8 @@ public class WriteAction implements Action {
 			
 			BbsDAO.add(vo);
 			
-			
-			viewPath = "control?type=list&reqnum="+reqnum;
-			
-	
+			request.setAttribute("thisReqnum", reqnum);
+			viewPath = null;
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

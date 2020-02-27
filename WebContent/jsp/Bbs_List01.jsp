@@ -1,3 +1,4 @@
+<%@page import="project.vo.RegVO"%>
 <%@page import="project.vo.BbsVO"%>
 <%@page import="project.vo.PageVO"%>
 <%@page import="mybatis.dao.BbsDAO"%>
@@ -59,7 +60,20 @@
 			<thead>
 				<tr>
 					<td colspan="6" style="text-align:right;">
+<%
+	Object obj = session.getAttribute("loVo");
+	RegVO vo = null;
+
+	if(obj != null) {
+		vo = (RegVO)obj; 
+%>					
 					<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>&reqnum=<%=reqnum%>'"/>
+<%
+	} else {
+%>
+					<input type="button" value="글쓰기" onclick="aaa()"/>
+<%	}
+%>				
 					</td>
 				</tr>
 				<tr class="title">
@@ -100,7 +114,17 @@
                         </ol>
 					</td>
 					<td style="border-left: none;">
+<%
+if(obj != null) {
+	vo = (RegVO)obj; 
+%>	
 						<input type="button" value="글쓰기"	onclick="javascript:location.href='control?type=write&cPage=<%=pvo.getNowPage()%>&reqnum=<%=reqnum%>'"/>
+<%
+	} else {
+%>
+					<input type="button" value="글쓰기" onclick="aaa()"/>
+<%	}
+%>	
 					</td>
 				</tr>
 			</tfoot>
@@ -148,6 +172,10 @@
 			document.frm.b_idx.value = b_idx;
 			document.frm.cPage.value = cPage;
 			document.frm.submit();
+		}
+		
+		function aaa(){
+			alert("로그인 후 이용하세요!");
 		}
 	</script>
 </div>
