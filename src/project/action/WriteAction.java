@@ -1,6 +1,8 @@
 package project.action;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -36,27 +38,38 @@ public class WriteAction implements Action {
 					"utf-8", new DefaultFileRenamePolicy());
 			String reqnum = mr.getParameter("reqnum");
 			
-			BbsVO vo = new BbsVO();
-			vo.setIp(request.getRemoteAddr());
-			vo.setType(reqnum);
-			vo.setSubject(mr.getParameter("subject"));
-			vo.setWriter(mr.getParameter("writer"));
-			vo.setContent(mr.getParameter("str"));
-			vo.setPwd(mr.getParameter("pwd"));
-			vo.setKategorie("");
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("ip",request.getRemoteAddr());
+			map.put("type",reqnum);
+			map.put("subject",mr.getParameter("subject"));
+			map.put("writer", mr.getParameter("writer"));
+			map.put("content",mr.getParameter("str"));
+			map.put("pwd",mr.getParameter("pwd"));
+			map.put("kategorie","");
 			File f = mr.getFile("file");
 			
 			String f_name = "";
 			String o_name = "";
+			String r_idx = "";
+			RegVO rvo = null;
+			
+			HttpSession session = request.getSession();
+			Object obj = session.getAttribute("loVo");
+			if(obj != null) {
+				rvo = (RegVO)obj;
+				r_idx = rvo.getR_idx();
+			}
+			
 			if(f != null){
 				o_name = mr.getOriginalFileName("file");
 				f_name = f.getName();
 			}
 			
-			vo.setFile_name(f_name);
-			vo.setOri_name(o_name);
+			map.put("file_name",f_name);
+			map.put("ori_name",o_name);
+			map.put("r_idx",r_idx);
 			
-			BbsDAO.add(vo);
+			BbsDAO.add(map);
 			
 			request.setAttribute("thisReqnum", reqnum);
 			viewPath = null;

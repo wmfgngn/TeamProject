@@ -75,10 +75,10 @@ public class BbsDAO {
 		return vo;
 	}
 	
-	public static void add(BbsVO vo) {
+	public static void add(Map<String,String> map) {
 		SqlSession ss = FactoryService.getFactory().openSession();
-		
-		int cnt = ss.insert("addBbs", vo);
+
+		int cnt = ss.insert("bbs.addBbs", map);
 		if(cnt > 0) {
 			ss.commit();
 		}

@@ -124,8 +124,10 @@
 			<hr/>
 			<table id="ans">
 <%
-	List<CommVO> c_list = vo.getC_list();
-
+	Object c_obj = vo.getC_list();
+	List<CommVO> c_list = null;
+	if(c_obj != null){
+		c_list = vo.getC_list();
 		for(CommVO cvo : c_list){
 %>
 				<tr>
@@ -139,6 +141,7 @@
 				</tr>
 <%
 		}//for의 끝
+	}
 	}else{
 		response.sendRedirect("control");
 	}

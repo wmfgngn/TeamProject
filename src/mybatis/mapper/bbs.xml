@@ -19,11 +19,21 @@
 			select="com" column="b_idx"/>
 	</resultMap>
 
-	<!-- 특정 글의 기본키를 조건으로 글의 댓글을 조회 -->	
-	<select id="com" resultType="project.vo.CommVO" parameterType="String">
+		<!-- 특정 글의 기본키를 조건으로 글의 댓글을 조회 / 댓글 작성자 정보 호출-->
+	<select id="com" resultType="project.vo.CommVO" parameterType="String" resultMap="get_ansrvo">
 		SELECT * FROM inven_comment
 		WHERE b_idx = #{b_idx}
 		ORDER BY c_idx
+	</select>
+	
+	<resultMap type="project.vo.CommVO" id="get_ansrvo">
+		<id column="r_idx" property="r_idx"/>
+		<association property="rvo" javaType="project.vo.RegVO" select="ansrvo" column="r_idx"/>
+	</resultMap>
+	
+	<select id="ansrvo" resultType="project.vo.RegVO" parameterType="String">
+		select * from regist_t
+		where r_idx = #{r_idx}
 	</select>
 
 	<select id="bbslist" resultMap="map" parameterType="java.util.Map">
@@ -38,7 +48,18 @@
 	<!--******************************-->
 	
 	<!-- 기본키(b_idx)를 이용한 특정글 조회 -->
-	<select id="view" resultMap="map" parameterType="String">
+	<resultMap type="project.vo.BbsVO" id="rvomap">
+		<!-- 1:1 관계(has-a)를 가진 EmpVO의 dvo에 객체를 전달 / n:m 관계는 collection -->		
+		<association property="rvo" javaType="project.vo.RegVO"
+			select="get_rvo" column="r_idx" />
+	</resultMap>
+	
+	<select id="get_rvo" resultType ="project.vo.RegVO" parameterType="String">
+		SELECT * FROM regist_t
+		WHERE r_idx = #{r_idx}
+	</select>
+	
+	<select id="view" resultMap ="rvomap" parameterType="java.util.Map">
 		SELECT * FROM inven_bbs
 		WHERE b_idx = #{b_idx}
 	</select>
@@ -50,13 +71,13 @@
 		SET hit = hit+1
 		WHERE b_idx = #{b_idx}
 	</update>
-	
-		<!-- 글쓰기 -->
+
+	<!-- 글쓰기 -->
 	<insert id="addBbs" parameterType="project.vo.BbsVO">
-		INSERT INTO inven_bbs(type, b_idx, subject, writer, content, write_date, ip, status, file_name, hit, ori_name, pwd, recommend, kategorie)
-		values(#{type}, bbs_t_seq.NEXTVAL, #{subject}, #{writer}, #{content}, sysdate, #{ip}, 0, #{file_name}, 0, #{ori_name}, #{pwd}, 0, #{kategorie})
+		INSERT INTO inven_bbs(type, b_idx, subject, writer, content, write_date, ip, status, file_name, hit, ori_name, pwd, recommend, kategorie, r_idx)
+		values(#{type}, bbs_t_seq.NEXTVAL, #{subject}, #{writer}, #{content}, sysdate, #{ip}, 0, #{file_name}, 0, #{ori_name}, #{pwd}, 0, #{kategorie}, #{r_idx})
 	</insert>
-	
+
 	<!-- 글 삭제 -->
 	<update id="del" parameterType="String">
 		update inven_bbs
