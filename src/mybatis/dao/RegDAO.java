@@ -54,6 +54,7 @@ public class RegDAO {
 
 		return vo;
 	}
+
 	//회원 정보 수정 
 	public static boolean crystal(String s_pw,String s_phone,String s_id) {
 		boolean chk = false;
