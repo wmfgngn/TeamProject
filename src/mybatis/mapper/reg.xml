@@ -41,4 +41,10 @@
 			status =1
 		WHERE s_pw =#{s_pw} and r_idx =#{r_idx}	
 	</update>
+	
+		<!-- 아이디 찾기 -->
+	<select id="findId" parameterType="java.util.Map" resultType="project.vo.RegVO">
+		select * from regist_t
+	 	where s_phone = #{idPhone} AND s_name = #{idName}
+	</select>
 </mapper>
