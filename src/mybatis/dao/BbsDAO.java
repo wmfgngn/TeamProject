@@ -68,6 +68,7 @@ public class BbsDAO {
 		map.put("s_id", s_id);
 		map.put("s_pw", s_pw);
 		
+		
 		RegVO vo = ss.selectOne("login", map);
 		ss.close();
 		

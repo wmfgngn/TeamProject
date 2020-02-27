@@ -5,7 +5,7 @@
 <mapper namespace="reg">
 	<select id="login" parameterType="java.util.Map" resultType="project.vo.RegVO">
 		select * from regist_t
-	 	where s_id = #{s_id} AND s_pw = #{s_pw}
+	 	where s_id = #{s_id} AND s_pw = #{s_pw} AND status = 0
 	</select>
 
 	<insert id="add" parameterType="java.util.Map">
@@ -18,16 +18,27 @@
 	</select>
 	<!-- 회원수정 -->
 	<update id="crystal" parameterType="java.util.Map">
-		UPDATA reg_t
-		SET 
-			s_pw = #{s_pw},
-			s_phone = #{s_phone}
+		update regist_t
+     <set>
+        <!-- 가장 마지막에 존재하는 콤마(,)를 잘라낸다. -->
+        <trim suffixOverrides=","><!-- prefixOverrides는 앞에 것을 suffixOverrides는 뒤에 것을 지워준다. -->
+           
+           <if test="s_pw != null">
+              s_pw = #{s_pw},
+           </if>
+           
+           <if test="s_phone != null">
+              s_phone = #{s_phone},
+           </if>
+        </trim>
+     </set>
+     where s_id = #{s_id}
 	</update>
 		<!-- 회원 탈퇴 -->
-	<update id="taltoe" parameterType="String">
-		UPDATE reg_t
+	<update id="taltoe" parameterType="java.util.Map">
+		UPDATE regist_t
 		SET
 			status =1
-		WHERE s_pw =#{s_pw}	
+		WHERE s_pw =#{s_pw} and r_idx =#{r_idx}	
 	</update>
 </mapper>

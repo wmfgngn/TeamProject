@@ -11,7 +11,7 @@ public class MyPageAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		return "/jsp/main.jsp";
+		return "/jsp/MyPage.jsp";
 	}
 
 }
