@@ -1,3 +1,4 @@
+<%@page import="project.vo.RegVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
   
@@ -53,6 +54,7 @@
 <%
 	String cPage = request.getParameter("cPage");
 	String reqnum = request.getParameter("reqnum");
+	RegVO vo = (RegVO)session.getAttribute("loVo");
 	//System.out.println(reqnum+"하하");
 %>
 	<div id="bbs">
@@ -67,22 +69,18 @@
 				</tr>
 				<tr>
 					<th>이름:</th>
-					<td><input type="text" name="writer" size="12"/></td>
+					<td><input type="text" name="writer" size="12" value="<%=vo.getS_name()%>"/></td>
 				</tr>				
 				<tr>
 					<th>첨부파일:</th>
 					<td><input type="file" name="file"/></td>
 				</tr>
-
-				<tr>
-					<th>비밀번호:</th>
-					<td><input type="password" name="pwd" size="12"/></td>
-				</tr>
-				
+			
 			</tbody>
 		</table>
 		<input type="hidden" name="str" id="str"/>
 		<input type="hidden" name="reqnum" value="<%= reqnum%>">
+		<input type="hidden" name="pwd" value="<%=vo.getS_pw() %>">
 	</form>
 	
 		<table>
@@ -98,7 +96,7 @@
 						<input type="button" value="보내기"
 						onclick="sendData()"/>
 						<input type="button" value="다시"/>
-						<input type="button" value="목록"/>
+						<input type="button" value="목록" onclick="javascript:location.href='control?type=list&reqnum=<%= reqnum%>'"/>
 					</td>
 				</tr>
 			</tbody>		

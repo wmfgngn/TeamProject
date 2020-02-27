@@ -34,7 +34,6 @@ public class WriteAction implements Action {
 		try {
 			MultipartRequest mr = new MultipartRequest(request, path, 1024*1024*5, 
 					"utf-8", new DefaultFileRenamePolicy());
-			
 			String reqnum = mr.getParameter("reqnum");
 			
 			BbsVO vo = new BbsVO();
