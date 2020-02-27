@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		Object obj =request.getAttribute("loVo");
+	<%	
+		
+		Object obj =session.getAttribute("loVo");
 		System.out.print(obj);//로그인 판단
 		if(obj != null){
 			RegVO rvo =(RegVO)obj;
@@ -18,8 +19,9 @@
 	<h1>회원 정보</h1>
 	<hr />
 	<hr />
+	
 	<div>
-		<form action="" name="frm">
+		<form action="" name="frm" method="post">
 			<table summary="마이페이지">
 			<tbody>
 				<tr>
@@ -55,13 +57,16 @@
 						<input type="button" value="회원정보변경"
 							onclick="edit()"/>
 						<input type="button" value="회원탈퇴" 
-							onclick="del_btn"/>
-						<input type="button" value="목록"
+							onclick="del_btn()"/>
+						<input type="button" value="메인"
 							onclick="goList('${loVo}')"/>
 					</td>
 				</tr>
 				</tbody>
 			</table>
+			
+			<input type="hidden" name="r_idx" value="<%=rvo.getR_idx()%>">
+			
 		</form>
 	</div>
 	<%
@@ -74,15 +79,15 @@
 	
 	
 	function goList(loVo){
-		location.href="control?type=list&loVo="+loVo;
+		location.href="control?type=main&loVo="+loVo;
 	}
 	
 	function edit(){
-		document.frm.type.value = "crystal";
+		document.frm.action= "control?type=crystal";
 		document.frm.submit();
 	}
 	function del_btn(){
-		document.frm.type.value = "taltoe";
+		document.frm.action= "control?type=taltoe";
 		document.frm.submit();
 	}
 	

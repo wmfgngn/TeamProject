@@ -75,18 +75,21 @@ public class RegDAO {
 		 
 	}
 	//회정 탈퇴
-	public static boolean taltoe(String s_pw) {
-		boolean chk = false;
-		SqlSession ss =FactoryService.getFactory().openSession();
-		int cnt = ss.update("reg.taltoe",s_pw);
-		
-		if(cnt >0) {
-			chk =true;
-			ss.commit();
-		}else
-			ss.rollback();
-			ss.close();
-		return chk;	
-	}
+		public static boolean taltoe(String s_pw,String r_idx) {
+			boolean chk = false;
+			SqlSession ss =FactoryService.getFactory().openSession();
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("s_pw",s_pw);
+			map.put("r_idx",r_idx);
+			int cnt = ss.update("reg.taltoe",map);
+			
+			if(cnt >0) {
+				chk =true;
+				ss.commit();
+			}else
+				ss.rollback();
+				ss.close();
+			return chk;	
+		}
 	
 }
