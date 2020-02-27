@@ -12,7 +12,7 @@ public class ListAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		String path = null;
+		String path = "/jsp/Bbs_List01.jsp";
 		PageVO page = new PageVO();	// 한 페이지당 보여지는 게시물 수 (2), 페이지 묶음 (5) >> 기본 값
 		String reqnum = request.getParameter("reqnum");
 		if (reqnum == null) {
@@ -38,19 +38,6 @@ public class ListAction implements Action {
 		
 		PageVO pvo = (PageVO)request.getAttribute("page");
 		System.out.println("nowpage : " + pvo.getNowPage());
-		
-		switch(reqnum) {
-		case "1":
-			path = "/jsp/Bbs_List01.jsp";
-			break;
-		case "2":
-			path = "/jsp/Bbs_List02.jsp";
-			break;
-		case "3":
-			path = "/jsp/Bbs_List03.jsp";
-			break;
-			
-		}
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("reqnum", reqnum);
