@@ -41,6 +41,7 @@
 			<tr>
 				<td>
 					<input type="text" id="s_id" name="s_id" placeholder="영문숫자로 입력하세요" style="width:450px;height:50px;font-size:30px;"/>
+					<div id="box">"ㅅㅅㅅ"</div>
 				</td>
 			</tr>
 			<!-- PW -->
@@ -106,6 +107,32 @@
 	<script>
 		
 	$(function(){
+		
+		$("#s_id").on("keyup",function(){
+			var id = $(this).val();
+			//console.log(id); 확인 완료
+			if(id.trim().length > 4){
+					$.ajax({
+						url:"control",
+						type:"post",
+						data:"type=check&id="+encodeURIComponent(id)
+				}).done(function(data){
+					console.log("성공");
+					$("#box").html(data);
+				}).fail(function(err) {
+					console.log(err);
+				});
+			}else{
+				console.log("실패");
+				$("#box").html("");
+			}		
+					
+		});
+		
+		
+		
+		
+		
 		$("#regist_btn").bind("click",function(){
 			var id = $("#s_id").val().trim();
 			var pw = $("#s_pw").val().trim();
@@ -139,30 +166,19 @@
 				$("#s_phone3").focus();
 				return;
 			}
-
-			alert("가입완료");
-			frm.submit();
+			// 아이디가 이미 있으면 서브밋 안하고 경고창  없을때 서브밋
+		
+				if($("#box").html("사용가능")){
+					
+					alert("가입완료");
+					frm.submit();	
+				}else
+				alert("재입력하세요");
+			
 		});
 		
-		$("#s_id").on("keyup",function(){
-			
-			var str = $(this).val();
-			
-			if(str.trim().length > 3){
-				$.ajax({
-					url:"idok.jsp",
-					type:"post",
-					data:"id="+encodeuRIComponent(str)
-				}).done(function(data){
-					$("#box").html("사용가능합니다.");
-				}).fail(function(err){
-					consol.log(err);
-				});
-			}else{
-				$("#box").html("ID중복");
-			}
-
-		});
+		
+		
 		
 	});
 		
