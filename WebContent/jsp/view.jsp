@@ -16,7 +16,6 @@
 	Object obj = session.getAttribute("vo");
 	Object obj2 = session.getAttribute("loVo");
 	Object reqnum = session.getAttribute("reqnum");
-	String cPage = (String)request.getAttribute("cPage");
 	RegVO rvo = null;
 	BbsVO vo = null;
 	

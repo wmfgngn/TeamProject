@@ -8,52 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/summernote-lite.css"/>
-<style type="text/css">
-	#bbs table {
-	    width:780px;
-	    margin:0 auto;
-	    border:1px solid black;
-	    border-collapse:collapse;
-	    font-size:14px;
-	    
-	    
-	}
-	
-	#bbs table caption {
-	    font-size:20px;
-	    font-weight:bold;
-	    margin-bottom:10px;
-	}
-	
-	#bbs table th {
-	    text-align:center;
-	    border:1px solid black;
-	    padding:4px 10px;
-	}
-	
-	#bbs table td {
-	    text-align:left;
-	    border:1px solid black;
-	    padding:4px 10px;
-	}
-	#writer{
-		background-color: #dedede;
-	}
-	
-	.no {width:15%}
-	.subject {width:30%}
-	.writer {width:20%}
-	.reg {width:20%}
-	.hit {width:15%}
-	.title{background:lightsteelblue}
-	
-	.odd {background:silver}
-	
-		
-</style>
+<link rel="stylesheet" href="css/write.css"/>
 
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
+	<jsp:include page="menu.jsp"/>
 <%
 	String cPage = request.getParameter("cPage");
 	String reqnum = request.getParameter("reqnum");
