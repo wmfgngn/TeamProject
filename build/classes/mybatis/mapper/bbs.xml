@@ -27,7 +27,6 @@
 	</select>
 	
 	<resultMap type="project.vo.CommVO" id="get_ansrvo">
-		<id column="r_idx" property="r_idx"/>
 		<association property="rvo" javaType="project.vo.RegVO" select="ansrvo" column="r_idx"/>
 	</resultMap>
 	

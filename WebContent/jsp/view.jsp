@@ -62,8 +62,6 @@
 </style>
 </head>
 <%
-
-	
 	Object obj = request.getAttribute("vo");
 	Object obj2 = session.getAttribute("loVo");
 	Object reqnum = session.getAttribute("reqnum");
@@ -115,7 +113,7 @@
 					if(vo.getRvo().getR_idx().equals(rvo.getR_idx())){
 					%>
 					<tr><td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>')">삭제</button></td>
-						<td colspan="4"><button type=button id="view_edit" onclick="view_edit('<%=reqnum%>')">수정</button></td>
+						<td colspan="4"><button type=button id="view_edit" onclick="view_edit('<%=vo.getB_idx()%>')">수정</button></td>
 					</tr>
 					<% }
 					}%>
@@ -185,9 +183,9 @@
 			data:"type=view_del",
 			dataType:"json"
 		}).done(function(data){
-			location.href="control?type=list&reqnum="encodeURIComponent(reqnum);
+			location.href="control?type=list&reqnum="+reqnum;
 		}).fail(function(err){
-			
+			console.log(err);
 		});
 		
 	}
@@ -199,20 +197,20 @@
 			data:"type=ans_del",
 			dataType:"json"
 		}).done(function(data){
-			location.href="control?type=view&b_idx="encodeURIComponent(b_idx);
+			location.href="control?type=view&b_idx="+b_idx;
 		}).fail(function(err){
 			
 		});
 	}
 	
-	function view_edit(reqnum){
-		$a.jax({
+	function view_edit(b_idx){
+		$.ajax({
 			url:"control",
 			type:"post",
 			data:"type=view_edit",
 			dataType:"json"
 		}).done(function(data){
-			location.href="control?type=view&b_idx="encodeURIComponent(b_idx);
+			location.href="control?type=view&b_idx="+b_idx;
 		}).fail(function(err){
 			
 		});
