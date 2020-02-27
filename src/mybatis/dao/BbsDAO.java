@@ -94,7 +94,7 @@ public class BbsDAO {
 		
 		SqlSession ss = FactoryService.getFactory().openSession();
 		
-		int cnt = ss.selectOne("bbs.del",b_idx);
+		int cnt = ss.update("bbs.del",b_idx);
 		
 		if(cnt>0) {
 			value = true;

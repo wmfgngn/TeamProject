@@ -17,7 +17,7 @@ public class ViewDelAction implements Action {
 		boolean chk = BbsDAO.delBbs(b_idx);
 		request.setAttribute("value", chk);
 		
-		return "/del_bbs.jsp";
+		return "/jsp/del_bbs.jsp";
 		
 	}
 
