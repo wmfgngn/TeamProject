@@ -133,7 +133,14 @@
 			<div id="ans">
 					<%=cvo.getWriter() %>(<%=cvo.getWrite_date() %>)
 					<p><%=cvo.getContent() %></p>
+					<%
+			if(rvo != null) {
+				if(cvo.getRvo().getR_idx().equals(rvo.getR_idx())) {
+					%>
+					<button type=button id="ans_edit" onclick="ans_edit('<%=vo.getB_idx()%>')">수정</button>
 					<button type=button id="ans_del" onclick="ans_del('<%=vo.getB_idx()%>')">삭제</button>
+			<%	} 
+			}%>
 			</div>
 			<hr>
 <%
@@ -216,6 +223,10 @@
 		}).fail(function(err){
 			
 		});
+	}
+	
+	function ans_edit(b_idx){
+	
 	}
 	
 	function view_edit(b_idx){
