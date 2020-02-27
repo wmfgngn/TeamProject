@@ -5,7 +5,7 @@
 <mapper namespace="reg">
 	<select id="login" parameterType="java.util.Map" resultType="project.vo.RegVO">
 		select * from regist_t
-	 	where s_id = #{s_id} AND s_pw = #{s_pw}
+	 	where s_id = #{s_id} AND s_pw = #{s_pw} AND status = 0
 	</select>
 
 	<insert id="add" parameterType="java.util.Map">
