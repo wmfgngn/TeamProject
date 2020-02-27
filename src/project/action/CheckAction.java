@@ -15,7 +15,7 @@ public class CheckAction implements Action {
 		
 		//System.out.println(id);
 		RegVO vo =RegDAO.search(id);
-		System.out.println(vo+"액셕부분");
+		
 		
 		if(vo!=null) {
 			request.setAttribute("vo", vo);

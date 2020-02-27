@@ -6,7 +6,7 @@
 	//사용자가 입력한 id 값을 받아서 해당 id로 된 정보가 이는지를 알아낸다.
 
 	Object obj = request.getAttribute("vo");
-	System.out.print(obj +"json");
+	System.out.print(obj);
 	if (obj == null) {
 		// 아이디를 사용할 수 있는 경우
 %>

@@ -47,13 +47,13 @@ public class RegDAO {
 		return chk;
 	}
 	// 가입완료 된 멤버 아이디로 찾기 
-	public static RegVO search(String id) {
-		SqlSession ss = FactoryService.getFactory().openSession();
-		RegVO vo = ss.selectOne("reg.getid",id);
-		ss.close();
-		
-		return vo;
-	}
+		public static RegVO search(String id) {
+			SqlSession ss = FactoryService.getFactory().openSession();
+			RegVO vo = ss.selectOne("reg.getid",id);
+			ss.close();
+			
+			return vo;
+		}
 	//회원 정보 수정 
 	public static boolean crystal(String s_pw,String s_phone,String s_id) {
 		boolean chk = false;
