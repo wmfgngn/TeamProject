@@ -49,19 +49,20 @@ public class RegDAO {
 	// 가입완료 된 멤버 아이디로 찾기 
 	public static RegVO search(String id) {
 		SqlSession ss = FactoryService.getFactory().openSession();
-
-		RegVO vo = ss.selectOne("reg.member",id);
+		RegVO vo = ss.selectOne("reg.getid",id);
 		ss.close();
 		
 		return vo;
 	}
 	//회원 정보 수정 
-	public static boolean crystal(String s_pw,String s_phone) {
+	public static boolean crystal(String s_pw,String s_phone,String s_id) {
 		boolean chk = false;
 		SqlSession ss =FactoryService.getFactory().openSession();
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("s_pw",s_pw);
 		map.put("s_phone",s_phone);
+		map.put("s_id",s_id);
+	
 		 int cnt =ss.update("reg.crystal",map);
 		 
 		 if(cnt >0) {
