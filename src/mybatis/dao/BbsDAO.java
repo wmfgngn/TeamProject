@@ -107,6 +107,29 @@ public class BbsDAO {
 		
 		return value;
 	}
+	
+	// 댓글 저장
+		public static boolean c_add(String writer, String content, String pwd, String ip, String b_idx, String r_idx) {
+			boolean chk = false;
+			SqlSession ss = FactoryService.getFactory().openSession();
+			
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("writer", writer);
+			map.put("content", content);
+			map.put("pwd", pwd);
+			map.put("ip", ip);
+			map.put("b_idx", b_idx);
+			map.put("r_idx", r_idx);
+			
+			int i = ss.insert("bbs.c_add", map);
+			if(i > 0) {
+				chk = true;
+				ss.commit();
+			}
+			ss.close();
+			
+			return chk;
+		}
 
 }
 
