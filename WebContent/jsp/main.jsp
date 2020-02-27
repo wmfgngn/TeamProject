@@ -1,3 +1,4 @@
+<%@page import="project.vo.BbsVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,11 +67,27 @@
 					</tr>
 				</thead>
 				<tbody>
+				<%
+				Object obj01 = request.getAttribute("ar01");
+				if(obj01 != null) {
+					BbsVO[] vo = (BbsVO[])obj01;
+					for(int i = 0 ; i < vo.length ; i++) {
+				%>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					<tr>
+						<td><a href="javascript:view('1', '<%=vo[i].getB_idx()%>')">
+								<%=vo[i].getSubject()%>
+							<%	if(vo[i].getC_list().size() > 0) { %>
+									(<%=vo[i].getC_list().size() %>)
+							<%	} %>
+							</a></td>
+						<td><%=vo[i].getWriter() %></td>
+						<td><%=vo[i].getHit() %></td>
+					</tr>
+				<%
+					}
+				} else { %>
+					<tr><td>게시글이 없습니다</td></tr>
+			<%	}%>
 				</tbody>
 			</table>
 		</div>
@@ -84,13 +101,27 @@
 						<td>조회수</td>
 					</tr>
 				</thead>
-				<tbody>
+				<%
+				Object obj02 = request.getAttribute("ar02");
+				if(obj02 != null) {
+					BbsVO[] vo = (BbsVO[])obj02;
+					for(int i = 0 ; i < vo.length ; i++) {
+				%>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					<tr>
-				</tbody>
+						<td><a href="javascript:view('1', '<%=vo[i].getB_idx()%>')">
+								<%=vo[i].getSubject()%>
+							<%	if(vo[i].getC_list().size() > 0) { %>
+									(<%=vo[i].getC_list().size() %>)
+							<%	} %>
+							</a></td>
+						<td><%=vo[i].getWriter() %></td>
+						<td><%=vo[i].getHit() %></td>
+					</tr>
+				<%
+					}
+				} else { %>
+					<tr><td>게시글이 없습니다</td></tr>
+			<%	}%>
 			</table>
 		</div>
 		<div class="bss_type02 fr">
@@ -103,15 +134,48 @@
 						<td>조회수</td>
 					</tr>
 				</thead>
-				<tbody>
+				<%
+				Object obj03 = request.getAttribute("ar03");
+				if(obj03 != null) {
+					BbsVO[] vo = (BbsVO[])obj03;
+					for(int i = 0 ; i < vo.length ; i++) {
+				%>
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					<tr>
-				</tbody>
+						<td><a href="javascript:view('1', '<%=vo[i].getB_idx()%>')">
+								<%=vo[i].getSubject()%>
+							<%	if(vo[i].getC_list().size() > 0) { %>
+									(<%=vo[i].getC_list().size() %>)
+							<%	} %>
+							</a></td>
+						<td><%=vo[i].getWriter() %></td>
+						<td><%=vo[i].getHit() %></td>
+					</tr>
+				<%
+					}
+				} else { %>
+					<tr><td colspan="3">게시글이 없습니다</td></tr>
+			<%	}%>
 			</table>
 		</div>
 	</div>
+	
+	<form action="control" method="post" name="frm">
+		<input type="hidden" name="type" value="view"/>
+		<input type="hidden" name="cPage" />
+		<input type="hidden" name="b_idx" />
+	</form>
+	
+	<%-- Script *******************************************************************--%>
+	<script>
+		function view(cPage, b_idx) {
+			document.frm.b_idx.value = b_idx;
+			document.frm.cPage.value = cPage;
+			document.frm.submit();
+		}
+		
+		function aaa(){
+			alert("로그인 후 이용하세요!");
+		}
+	</script>
 </body>
 </html>

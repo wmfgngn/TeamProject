@@ -45,14 +45,16 @@
 .bss_type02.fr { width: 420px; }
 .bss_type01 {
 	width: 400px;
-	float: left;
-	overflow: hidden;
-}
-.bss_type02 {
-	width: 500px;
+	height: 200px;
 	float: left;
 	overflow: hidden;
 	border: 1px solid black;
+}
+.bss_type02 {
+	width: 500px;
+	height: 200px;
+	float: left;
+	overflow: hidden;
 }
 .subject {
 	height: 35px;
