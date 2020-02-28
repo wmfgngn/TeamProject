@@ -94,12 +94,12 @@
 
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input id="s_wgender" name="s_gender" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="credit">여자</label>
+            <input id="s_wgender" name="s_gender" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label" for="s_wgender">여자</label>
           </div>
           <div class="custom-control custom-radio">
             <input id="s_mgender" name="s_gender" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="debit">남자</label>
+            <label class="custom-control-label" for="s_mgender">남자</label>
           </div>
         </div>
 		</div>
