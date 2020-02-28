@@ -57,11 +57,11 @@ if(obj03 != null) {
 	<div class="container">
     <!-- Example row of columns -->
     <div class="row">
-    	<div class="col-md-4" style="height: 100px;">
+    	<div class="col-md-4" style="height: 50px; boreder: 3px solid red;">
     	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
     	<%if(vo01.length > 0){ %>
     		<h5><%=vo01[0].getSubject() %></h5>
-    		<h6 class="ellip"><%
+    		<h6 class="ellip" style="height: 50px;"><%
     			String cont = vo01[0].getContent();
     			while(true) {
 	    			int f_idx = cont.indexOf("<img");
@@ -90,7 +90,7 @@ if(obj03 != null) {
     	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
     	<%if(vo02.length > 0){ %>
     		<h5><%=vo02[0].getSubject() %></h5>
-    		<h6 class="ellip">
+    		<h6 class="ellip" style="height: 50px;">
     		<%
     			String cont = vo02[0].getContent();
     			while(true) {
@@ -120,7 +120,7 @@ if(obj03 != null) {
     	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
     	<%if(vo03.length > 0){ %>
     		<h5><%=vo03[0].getSubject() %></h5>
-    		<h6 class="ellip"><%
+    		<h6 class="ellip" style="height: 50px;"><%
     			String cont = vo03[0].getContent();
     			while(true) {
 	    			int f_idx = cont.indexOf("<img");
