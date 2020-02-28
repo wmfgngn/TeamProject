@@ -96,11 +96,16 @@ public class MyController extends HttpServlet {
 		Action action = actionMap.get(type);
 
 		String viewPath = action.execute(request, response);
+		
 		if(viewPath != null) {
 			RequestDispatcher disp = request.getRequestDispatcher(viewPath);
 			disp.forward(request, response);
-		}else {
-			response.sendRedirect("control?type=list&reqnum="+request.getAttribute("thisReqnum"));
+		} else {
+			if(type.equals("com")) {
+				response.sendRedirect("control?type=view&cPage=" + request.getAttribute("cPage") + "&b_idx=" + request.getAttribute("b_idx"));
+			} else {
+				response.sendRedirect("control?type=list&reqnum="+request.getAttribute("thisReqnum"));
+			}
 		}
 	}
 }

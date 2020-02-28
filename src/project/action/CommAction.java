@@ -28,11 +28,15 @@ public class CommAction implements Action {
 		String ip = request.getRemoteAddr();
 		String b_idx = request.getParameter("b_idx");
 		String r_idx = vo.getR_idx();
-		System.out.println(writer +" "+ content +" "+ pwd +" "+ ip +" "+ b_idx +" "+ r_idx);
-		BbsDAO.c_add(writer, content, pwd, ip, b_idx, r_idx);
+		
+		if(BbsDAO.c_add(writer, content, pwd, ip, b_idx, r_idx)) {
+			request.setAttribute("cPage", cPage);
+			request.setAttribute("b_idx", b_idx);
+			System.out.println("댓글작성 : " + content);
+		}
 		
 		
-		return "control?type=view&cPage=" + cPage + "&b_idx=" + b_idx;
+		return null;
 	}
 
 }
