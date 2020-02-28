@@ -17,7 +17,7 @@ public class LogoutAction implements Action {
 		session.removeAttribute("loVo");
 		request.removeAttribute("loVo");
 		
-		return "/jsp/main.jsp";
+		return "control?type=main";
 	}
 
 }

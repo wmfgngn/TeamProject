@@ -30,10 +30,11 @@ h5, h6 {
 </head>
 <body>
 <%
-Object obj01 = request.getAttribute("ar01");
 BbsVO[] vo01 = null;
 BbsVO[] vo02 = null;
 BbsVO[] vo03 = null;
+
+Object obj01 = request.getAttribute("ar01");
 if(obj01 != null) {
 	vo01 = (BbsVO[])obj01;
 }
@@ -58,8 +59,8 @@ if(obj03 != null) {
     <!-- Example row of columns -->
     <div class="row">
     	<div class="col-md-4" style="height: 50px; boreder: 3px solid red;">
+    	<%if(vo01 !=null && vo01.length > 0){ %>
     	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
-    	<%if(vo01.length > 0){ %>
     		<h5><%=vo01[0].getSubject() %></h5>
     		<h6 class="ellip" style="height: 50px;"><%
     			String cont = vo01[0].getContent();
@@ -87,8 +88,8 @@ if(obj03 != null) {
     	
     	</div>
     	<div class="col-md-4" style="height: 100px;">
+    	<%if(vo02 !=null && vo02.length > 0){ %>
     	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
-    	<%if(vo02.length > 0){ %>
     		<h5><%=vo02[0].getSubject() %></h5>
     		<h6 class="ellip" style="height: 50px;">
     		<%
@@ -117,8 +118,8 @@ if(obj03 != null) {
     		<br/>
     	</div>
     	<div class="col-md-4" style="height: 100px;">
+    	<%if(vo03 !=null && vo03.length > 0){ %>
     	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
-    	<%if(vo03.length > 0){ %>
     		<h5><%=vo03[0].getSubject() %></h5>
     		<h6 class="ellip" style="height: 50px;"><%
     			String cont = vo03[0].getContent();
@@ -172,7 +173,7 @@ if(obj03 != null) {
 				<%
 					}
 				} else { %>
-					<tr><td>게시글이 없습니다</td></tr>
+					<tr><td colspan="2">게시글이 없습니다</td></tr>
 			<%	}%>
 				</tbody>
 			</table></p>
@@ -204,7 +205,7 @@ if(obj03 != null) {
 				<%
 					}
 				} else { %>
-					<tr><td>게시글이 없습니다</td></tr>
+					<tr><td colspan="2">게시글이 없습니다</td></tr>
 			<%	}%>
 			</table></p>
       </div>
@@ -236,7 +237,7 @@ if(obj03 != null) {
 				<%
 					}
 				} else { %>
-					<tr><td colspan="3">게시글이 없습니다</td></tr>
+					<tr><td colspan="2">게시글이 없습니다</td></tr>
 			<%	}%>
 			</table></p>
       </div>
