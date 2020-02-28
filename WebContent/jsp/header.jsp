@@ -10,6 +10,7 @@
 </head>
 <body>
 	<div id="menu" class="txt_r">
+	<div id="steamLogo"></div>
 <%
   	Object obj = session.getAttribute("loVo");
 	RegVO vo = null;

@@ -1,16 +1,19 @@
 @charset "UTF-8";
 
+	body{
+	}
 	
 	#toMain{
 		display:inline-block;
 		width: 495px;
-		height: 250px;
+		height: 200px;
+		margin-top: 30px;
 	}
 	
 	#toMain>a {
 		display:inline-block;
 		width: 495px;
-		height: 250px;
+		height: 200px;
 		line-height: 100%;
 		text-align: center;
 	}
@@ -47,7 +50,7 @@
 		width: 300px;
 	}
 	#airbnb{
-		color: #07054F;
+		color: black;
 	}
 	.btn-group{
 		margin-left: 100px;

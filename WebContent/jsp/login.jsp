@@ -29,7 +29,7 @@
 	</div>
 	<div id="rightPart"> 
 	<div id="toMain">
-		<a href="#"><span id="airbnb" class="fab fa-steam fa-8x"><h1>으아아아아아</h1></span></a>
+		<a href="#"><span id="airbnb" class="fab fa-steam fa-8x"><h1>Steam Game</h1></span></a>
 		<!-- push 변경 실험실험실험실험실험실험실험실험실험싫머
 		
 				하하하하ㅏ하하하ㅏ하하하하ㅏ하하하하 -->
