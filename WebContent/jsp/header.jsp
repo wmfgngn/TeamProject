@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
 	<div id="menu" class="txt_r">
 <%
   	Object obj = session.getAttribute("loVo");
@@ -25,8 +26,23 @@
 		<a href="control?type=regist">회원가입</a>
 <%	}
 %>
-		<input type="text" /> <input type="button" value="검색" />
+	
+		<input type="text" id="searchValue" name="searchValue"/> <input type="button" id="search_btn" value="검색" />
+		<input type="hidden" id="type" name="type" value="searchBbs"/>
 	</div>
+
 	<hr noshade color="line">
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			$("#search_btn").bind("click", function(){
+				var searchValue = $("#searchValue").val();
+				
+				location.href="control?type=searchBbs&searchValue="+searchValue;
+				
+			});
+			
+		});
+	</script>
 </body>
 </html>
