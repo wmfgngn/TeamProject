@@ -101,7 +101,7 @@
 					<%
 			if(rvo != null) {
 				if(cvo.getRvo().getR_idx().equals(rvo.getR_idx())) {
-					%>
+					%>								
 					<button type=button id="ans_edit" onclick="ans_edit('<%=vo.getB_idx()%>')">수정</button>
 					<button type=button id="ans_del" onclick="ans_del('<%=vo.getB_idx()%>')">삭제</button>
 			<%	} 
@@ -128,6 +128,7 @@
 	<input type="hidden" name="r_idx" >
 	<input type="hidden" name="cPage" >
 </form>
+
 	<hr/>
 	</div>
 	</div>
@@ -184,15 +185,22 @@
 	}
 	
 	function ans_del(b_idx){
+		
+		var inputString = prompt("비밀번호 작성","");
+		var Param ="type=ans_del&b_idx="+encodeURIComponent(b_idx)+
+		"&pwd="+encodeURIComponent(inputString);
 		$.ajax({
 			url:"control",
 			type:"post",
-			data:"type=ans_del",
+			data:Param,
 			dataType:"json"
 		}).done(function(data){
+			//console.log(data.value)
+			if(data.value == "true")
+				alert("댓글삭제 완료");
 			location.href="control?type=view&b_idx="+b_idx;
 		}).fail(function(err){
-			
+			console.log(err)
 		});
 	}
 	

@@ -22,7 +22,7 @@
 	<!-- 특정 글의 기본키를 조건으로 글의 댓글을 조회 / 댓글 작성자 정보 호출-->
 	<select id="com" resultType="project.vo.CommVO" parameterType="String" resultMap="get_ansrvo">
 		SELECT * FROM inven_comment
-		WHERE b_idx = #{b_idx}
+		WHERE b_idx = #{b_idx} and status = 0
 		ORDER BY c_idx
 	</select>
 	
@@ -70,14 +70,14 @@
 	<!-- 댓글 저장 -->
 	<insert id="c_add" parameterType="java.util.Map">
 		INSERT INTO inven_comment
-		VALUES (comment_t_seq.NEXTVAL, #{writer}, #{content}, #{pwd}, SYSDATE, #{ip}, #{b_idx}, #{r_idx})
+		VALUES (comment_t_seq.NEXTVAL, #{writer}, #{content}, #{pwd}, SYSDATE, #{ip}, #{b_idx}, #{r_idx}, #{status})
 	</insert>
 	<!--******************************-->
 	
 	<!-- Update를 이용한 댓글 삭제 -->
 	<update id="c_del" parameterType="java.util.Map">
-		UPDATE bbs_t
-		SET status = '1'
+		UPDATE inven_comment
+		SET status = 1
 		WHERE b_idx = #{b_idx}
 		AND	pwd = #{pwd}
 	</update>

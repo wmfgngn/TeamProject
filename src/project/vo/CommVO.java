@@ -1,7 +1,7 @@
 package project.vo;
 
 public class CommVO {
-	private String c_idx, writer, content, pwd, write_date, ip, b_idx;
+	private String c_idx, writer, content, pwd, write_date, ip, b_idx , status;
 	private RegVO rvo;
 	
 	// constructor --------------------------------------------------------------------------------
@@ -31,5 +31,11 @@ public class CommVO {
 	public void setB_idx(String b_idx) { this.b_idx = b_idx; }
 	public RegVO getRvo() { return rvo; }
 	public void setRvo(RegVO rvo) { this.rvo = rvo; }
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 }

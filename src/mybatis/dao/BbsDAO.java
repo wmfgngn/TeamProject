@@ -120,7 +120,7 @@ public class BbsDAO {
 			map.put("ip", ip);
 			map.put("b_idx", b_idx);
 			map.put("r_idx", r_idx);
-			
+			map.put("status","0");
 			int i = ss.insert("bbs.c_add", map);
 			if(i > 0) {
 				chk = true;
@@ -148,11 +148,17 @@ public class BbsDAO {
 		}
 		
 	// 댓글 삭제 
-		public static boolean c_del(String b_idx) {
+		public static boolean c_del(String b_idx,String pwd) {
 			boolean chk = false;
 			
 			SqlSession ss = FactoryService.getFactory().openSession();
-			int cnt = ss.update(b_idx);
+			Map<String, String>map = new HashMap<String, String>();
+			
+			map.put("b_idx",b_idx);
+			map.put("pwd",pwd);
+			
+			int cnt = ss.update("bbs.c_del",map);
+			
 			if(cnt>0) {
 				chk = true;
 				ss.commit();
