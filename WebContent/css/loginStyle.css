@@ -23,7 +23,7 @@
 		width: 495px;
 		height: 700px;
 		float: left;
-		background-image: url( "../images/michael.png" );
+		background-image: url( "../images/man.jpg" );
 	}
 	#rightPart{
 		width: 495px;
@@ -47,7 +47,7 @@
 		width: 300px;
 	}
 	#airbnb{
-		color: #FCDE48;
+		color: #07054F;
 	}
 	.btn-group{
 		margin-left: 100px;

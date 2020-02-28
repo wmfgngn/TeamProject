@@ -1,3 +1,4 @@
+<%@page import="project.vo.RegVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,7 +29,7 @@
 	</div>
 	<div id="rightPart"> 
 	<div id="toMain">
-		<a href="#"><span id="airbnb" class="fab fa-airbnb fa-8x"><h1>으아아아아아</h1></span></a>
+		<a href="#"><span id="airbnb" class="fab fa-steam fa-8x"><h1>으아아아아아</h1></span></a>
 		<!-- push 변경 실험실험실험실험실험실험실험실험실험싫머
 		
 				하하하하ㅏ하하하ㅏ하하하하ㅏ하하하하 -->
@@ -55,7 +56,7 @@
 							<div class="saveid">
 								<div class="btn-group">
 									<label class="txt btn btn-info">
-										<input id="save_login" class="saveLogin" name="save_login" type="checkbox"> 
+										<input id="save_login" class="saveLogin" name="save_login" type="checkbox" checked> 
 										<i class="icon-user icon-white"></i> 로그인 상태 유지</label>
 									<label class="txt btn btn-info">
 										<input id="save_id" class="saveId" name="save_id" type="checkbox"> 
