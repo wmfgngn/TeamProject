@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/summernote-lite.css"/>
 <link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/write.css"/>
 <link href="css/jquery-ui.min.css" rel="stylesheet">
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
