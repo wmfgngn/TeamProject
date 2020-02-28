@@ -54,4 +54,10 @@
 		SET recommend = recommend+1
 		WHERE b_idx = #{b_idx}
 	</update>
+	
+		<!-- 비밀번호 찾기 -->
+	<select id="findPw" parameterType="java.util.Map" resultType="project.vo.RegVO">
+		select * from regist_t
+	 	where s_phone = #{pwPhone} AND s_id = #{pwId}
+	</select>
 </mapper>

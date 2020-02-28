@@ -26,6 +26,14 @@ public class FindAction implements Action {
 			
 			viewPath = "/jsp/findId_ajax.jsp";
 		}else if(nono.equals("1")) {
+			String pwPhone = request.getParameter("pwPhone");
+			String pwId = request.getParameter("pwId");
+			
+			RegVO vo = RegDAO.findPw(pwPhone, pwId);
+			
+			String pw = vo.getS_pw();
+			
+			request.setAttribute("pw", pw);
 			
 			viewPath = "/jsp/findPw_ajax.jsp";
 		}

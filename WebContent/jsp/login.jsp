@@ -227,7 +227,7 @@
 				
 				var param = "pwPhone="+encodeURIComponent(pwPhone)+"&nono=1"+"&pwId="+encodeURIComponent(pwId)
 				
-				console.log(param)
+				//console.log(param)
 				
 				$.ajax({
 					url: "control?type=find",

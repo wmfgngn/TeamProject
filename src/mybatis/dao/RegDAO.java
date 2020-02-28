@@ -93,7 +93,7 @@ public class RegDAO {
 		ss.close();
 		return chk;	
 	}
-	//아이디 
+	//아이디 찾기
 	public static RegVO findId(String idPhone, String idName) {
 		RegVO vo = null;
 		SqlSession ss = FactoryService.getFactory().openSession();
@@ -120,6 +120,23 @@ public class RegDAO {
 		else
 			ss.rollback();
 		ss.close();
+	}
+	
+	//비밀번호 찾기
+	public static RegVO findPw(String pwPhone, String pwId) {
+		RegVO vo = null;
+		SqlSession ss = FactoryService.getFactory().openSession();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("pwPhone", pwPhone);
+		map.put("pwId", pwId);
+
+		vo = ss.selectOne("reg.findPw", map);
+
+		if(vo != null) {
+			ss.close();
+		}
+
+		return vo;
 	}
 
 }
