@@ -10,6 +10,14 @@
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="../css/jquery-ui.min.css" rel="stylesheet">
+<style>
+
+	
+	#box{
+		float: right;
+		margin: 0;
+			}
+</style>
   </head>
 </head>
 
@@ -36,9 +44,9 @@
       <form class="needs-validation" novalidate>
         <div class="row">
           <div class="mb-3">
-            <label for="firstName">아이디</label>
+            <label for="firstName">아이디</label>&nbsp;<span id="box"></span>
             <input type="text" class="form-control" id="s_id" name="s_id" placeholder="" value="" required>
-            <div class="invalid-feedback" style="width: 100%;"><div id="box"></div>
+            <div class="invalid-feedback" style="width: 100%;">
             </div>
           </div>
         </div>
