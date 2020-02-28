@@ -8,11 +8,15 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/style.css"/>
 <link rel="stylesheet" href="css/main.css"/>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/jquery-ui.min.css" rel="stylesheet">
 <script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
-	<jsp:include page="menu.jsp"/>
 	<div>
 		<img src="images/main.jpg" id="main_img">
 	</div>

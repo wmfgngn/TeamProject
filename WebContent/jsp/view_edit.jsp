@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/summernote-lite.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/jquery-ui.min.css" rel="stylesheet">
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <style type="text/css">
 	#bbs table {
 	    width:780px;
@@ -55,6 +62,7 @@
 
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <%
 	String cPage = (String)request.getAttribute("cPage");
 	String reqnum = (String)request.getAttribute("reqnum");
@@ -116,7 +124,6 @@
 <%
 	}
 %>	
-	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/summernote-lite.js"></script>
 	<script src="js/lang/summernote-ko-KR.min.js"></script>
 	

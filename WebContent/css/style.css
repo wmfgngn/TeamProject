@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body{
+	margine: 20px 50px;
+}
 #warp {
 	width: 970px;
 	height: auto;
