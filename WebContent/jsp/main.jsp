@@ -89,7 +89,7 @@ if(obj03 != null) {
     	</div>
     	<div class="col-md-4" style="height: 100px;">
     	<%if(vo02 !=null && vo02.length > 0){ %>
-    	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
+    	<a href="javascript:view('1', '<%=vo02[0].getB_idx()%>')">
     		<h5><%=vo02[0].getSubject() %></h5>
     		<h6 class="ellip" style="height: 50px;">
     		<%
@@ -119,7 +119,7 @@ if(obj03 != null) {
     	</div>
     	<div class="col-md-4" style="height: 100px;">
     	<%if(vo03 !=null && vo03.length > 0){ %>
-    	<a href="javascript:view('1', '<%=vo01[0].getB_idx()%>')">
+    	<a href="javascript:view('1', '<%=vo03[0].getB_idx()%>')">
     		<h5><%=vo03[0].getSubject() %></h5>
     		<h6 class="ellip" style="height: 50px;"><%
     			String cont = vo03[0].getContent();
