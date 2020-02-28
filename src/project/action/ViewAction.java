@@ -16,7 +16,7 @@ public class ViewAction implements Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		String cPage = request.getParameter("cPage");
 		String b_idx = request.getParameter("b_idx");
-		
+
 		BbsVO vo = BbsDAO.view(b_idx);
 		System.out.println("viewaction bidx : " + vo.getB_idx());
 		HttpSession session = request.getSession();

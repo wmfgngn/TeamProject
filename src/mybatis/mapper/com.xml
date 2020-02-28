@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com">
+
+	<select id="getcom" resultType="project.vo.CommVO" parameterType="int">
+		SELECT * FROM inven_comment
+		WHERE c_idx = #{c_idx} 
+	</select>
+	
+	<update id="comedit" parameterType="project.vo.CommVO">
+		UPDATE inven_comment
+		SET content = #{content}, write_date = sysdate 
+		WHERE c_idx = #{c_idx}
+	</update>
+	
+</mapper>

@@ -93,21 +93,28 @@
 	List<CommVO> c_list = null;
 	if(c_obj != null){
 		c_list = vo.getC_list();
+		int i = 0;
 		for(CommVO cvo : c_list) {
 %>
-			<div>
+		<div id="com_div">
+			<form id="edit_frm<%=++i%>" action="control" method="post">
 					<%=cvo.getWriter() %>(<%=cvo.getWrite_date() %>)
-					<p><%=cvo.getContent() %></p>
+					<h6 id="content<%=i%>"><%=cvo.getContent() %></h6>
+					<input type="hidden" name="c_idx" value='<%=cvo.getC_idx() %>'/>
+					<input type="hidden" name="type" value="commedit"/>
+					<input type="hidden" name="cPage" value='${cPage}'/>
+					<input type="hidden" name="b_idx" value='<%=vo.getB_idx() %>'/>
 					<%
 			if(rvo != null) {
 				if(cvo.getRvo().getR_idx().equals(rvo.getR_idx())) {
-					%>								
-					<button type=button id="ans_edit" onclick="ans_edit('<%=vo.getB_idx()%>')">수정</button>
-					<button type=button id="ans_del" onclick="ans_del('<%=cvo.getC_idx()%>',<%=vo.getB_idx()%>)">삭제</button>
+					%>
+					<button type=button id="ans_edit<%=i%>" onclick="ans_edit('<%=i%>', '<%=cvo.getC_idx()%>', this.form)">수정</button>
+					<button type=button id="ans_del<%=i%>" onclick="ans_del('<%=cvo.getC_idx() %>','<%=vo.getB_idx()%>')">삭제</button>
 			<%	} 
 			}%>
-			</div>
+			</form>
 			<hr>
+		</div>
 <%
 			
 		}//for의 끝
@@ -177,6 +184,8 @@
 	      }).done(function(data){
 	    	 if(data.value == "true") {
 	        	 location.href="control?type=list&reqnum="+reqnum;
+	      	 } else {
+	      		 alert("댓글삭제 실패");
 	      	 }
 	      }).fail(function(err){
 	         console.log(err);
@@ -185,7 +194,6 @@
 	}
 	
 	function ans_del(c_idx,b_idx){
-		
 		var inputString = prompt("비밀번호 작성","");
 		var Param ="type=ans_del&c_idx="+encodeURIComponent(c_idx)+
 		"&pwd="+encodeURIComponent(inputString);
@@ -196,18 +204,26 @@
 			dataType:"json"
 		}).done(function(data){
 			//console.log(data.value)
-			if(data.value == "true")
+			if(data.value == "true"){
 				alert("댓글삭제 완료");
-			location.href="control?type=view&b_idx="+b_idx;
+				location.href="control?type=view&b_idx="+<%=vo.getB_idx()%>;
+			}
 		}).fail(function(err){
 			console.log(err)
 		});
 	}
 	
-	function ans_edit(b_idx){
-		
+	function ans_edit(num, c_idx, frm){
+		console.log(frm);
+		var content = $("#content"+num).html();
+		$("#content"+num).html("<input value='"+ content +"' name='content'/>");
+		$("#ans_edit"+num).attr("onclick", "ans_editok("+ num +")", frm);
 	}
 	
+	function ans_editok(num){
+		var frm = $("#edit_frm"+num);
+		frm.submit();
+	}
 	
 	function best(r_idx, cPage, b_idx) {
 		r_frm.r_idx.value = r_idx; 

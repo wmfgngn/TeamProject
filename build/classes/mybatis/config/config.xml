@@ -14,5 +14,6 @@
   <mappers>
   	<mapper resource="mybatis/mapper/bbs.xml"/>
   	<mapper resource="mybatis/mapper/reg.xml"/>
+  	<mapper resource="mybatis/mapper/com.xml"/>
   </mappers>
 </configuration>

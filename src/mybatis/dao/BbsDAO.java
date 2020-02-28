@@ -157,7 +157,7 @@ public class BbsDAO {
 			map.put("c_idx",c_idx);
 			map.put("pwd",pwd);
 			
-			int cnt = ss.update("bbs.c_del",map);
+			int cnt = ss.update("bbs.c_del", map);
 			
 			if(cnt>0) {
 				chk = true;

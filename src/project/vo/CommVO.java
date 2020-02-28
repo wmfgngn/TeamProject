@@ -6,12 +6,13 @@ public class CommVO {
 	
 	// constructor --------------------------------------------------------------------------------
 	public CommVO() { }
-	public CommVO(String writer, String content, String pwd, String ip, String b_idx) {
+	public CommVO(String writer, String content, String pwd, String ip, String b_idx, String status) {
 		this.writer = writer;
 		this.content = content;
 		this.pwd = pwd;
 		this.ip = ip;
 		this.b_idx = b_idx;
+		this.status = status;
 	}
 	
 	// getter setter ------------------------------------------------------------------------------

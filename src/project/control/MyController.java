@@ -101,7 +101,7 @@ public class MyController extends HttpServlet {
 			RequestDispatcher disp = request.getRequestDispatcher(viewPath);
 			disp.forward(request, response);
 		} else {
-			if(type.equals("com")) {
+			if(type.equals("com") || type.equals("commedit")) {
 				response.sendRedirect("control?type=view&cPage=" + request.getAttribute("cPage") + "&b_idx=" + request.getAttribute("b_idx"));
 			} else {
 				response.sendRedirect("control?type=list&reqnum="+request.getAttribute("thisReqnum"));
