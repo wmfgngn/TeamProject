@@ -10,12 +10,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/summernote-lite.css"/>
 <link rel="stylesheet" href="css/style.css"/>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="css/jquery-ui.min.css" rel="stylesheet">
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <style type="text/css">
 	#bbs table {
 	    width:780px;
@@ -63,6 +60,10 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
+<br/>
+<br/>
+<br/>
+<br/>
 <%
 	String cPage = (String)request.getAttribute("cPage");
 	String reqnum = (String)request.getAttribute("reqnum");
@@ -169,24 +170,11 @@
 	}
 	
 	function sendData(){
-		for(var i=0 ; i<document.forms[0].elements.length ; i++){
-		// 만약 제목과 이름만 입력되었는지 유효성 검사를 한다면...
-		if(i > 1)
-			break;
-		
-			if(document.forms[0].elements[i].value == ""){
-				alert(document.forms[0].elements[i].name+
-						"를 입력하세요");
-				document.forms[0].elements[i].focus();
-				return;//수행 중단
-			}
-		}
-
 		var str = $("#content").val();		
 		//console.log(str);
 		$("#str").val(str);
 		
-		document.forms[0].submit();
+		document.forms[2].submit();
 	}
 	
 	</script>
