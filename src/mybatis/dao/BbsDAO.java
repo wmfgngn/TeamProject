@@ -169,6 +169,23 @@ public class BbsDAO {
 			ss.close();
 			return chk;
 		}
+	
+	// 게시물 검색 기능
+		public static BbsVO[] searchBbs(String searchValue) {
+			BbsVO[] ar =null;
+			
+			SqlSession ss = FactoryService.getFactory().openSession();
+			
+			List<BbsVO> list = ss.selectList("bbs.search", searchValue);		
+			
+			if(list != null && list.size() > 0) {
+				ar = new BbsVO[list.size()];
+				list.toArray(ar);
+			}
+			ss.close();
+			//System.out.println(ar);
+			return ar;
+		}
 }
 
 
