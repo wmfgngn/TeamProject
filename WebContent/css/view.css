@@ -39,6 +39,10 @@
 		text-align: right;
 	}
 	
+	.tl{
+		text-align: left;
+	}
+	
 	#title{
 		height: 100px;
 		margin: 100px;

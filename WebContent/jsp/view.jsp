@@ -37,7 +37,7 @@
 			<!-- 해당 게시글의 주소를 복사할 수 있는 버튼 -->
 			<button type=button id="copy_bt" name="copy">복사</button>
 			<!-- 해당 게시글이 속해있는 게시판 목록으로 갈 수 있는 링크 -->
-			<lable id="lb"></lable>
+			<span id="lb"></span>
 			<a href="control?type=list&reqnum=<%=reqnum%>">해당 게시판 목록</a>
 		</div>
 		<div id="content">
@@ -52,7 +52,7 @@
 				</thead>
 				<tbody id="tbd">
 					<tr>
-						<td class="mv" colspan="4"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#ans">댓글</a></td>
+						<td class="mv" colspan="2"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#ans">댓글</a></td>
 					</tr>
 					<tr>
 						<td id="title" colspan="4"><%=vo.getSubject() %></td>
@@ -157,16 +157,13 @@
 		});
 
 		$("#adr_bt").bind("click",function(){
-		
-			$("#lb").text(ad);
-		
+			$("#lb").html("<input id='copy_lb' type='input' value='"+ ad +"' readonly='readonly'/>");
 		});
 
 		$("#copy_bt").bind("click",function(){
-
-			$("#lb").select();
-			var sc = document.execCommand('copy'); 
-			console.log(sc);
+			
+			$("#copy_lb").select();
+			document.execCommand("copy"); 
 	        
 			alert('복사되었습니다.'); 
 		});
