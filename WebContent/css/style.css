@@ -17,11 +17,7 @@
 	text-decoration: none;
 	color: black;
 }
-#steamLogo{
-	width: 40px;
-	height: 40px;
-	background-image: url( "../images/steam-logo-font.png" );
-}
+
 .txt_c{text-align: center}
 .txt_r{text-align: right}
 
