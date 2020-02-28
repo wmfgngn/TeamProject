@@ -53,6 +53,15 @@
 					<tr>
 						<th><span class="sp"><%=vo.getWriter() %></span></th>
 						<th><%=vo.getWrite_date() %></th>
+						<th>파일: <span class="sp"><%
+						if(vo.getFile_name() != null &&
+						vo.getFile_name().length() > 4){
+						%>
+						<a href="javascript: fDown('<%=vo.getFile_name()%>')">
+						<%=vo.getFile_name() %>
+						(<%=vo.getOri_name() %>)</a></span>
+							<%
+						}%></th>
 						<th>조회: <span class="sp"><%=vo.getHit() %></span></th>
 						<th>추천: <span class="sp"><%=vo.getRecommend() %></span></th>
 					</tr>
@@ -235,7 +244,10 @@
 		r_frm.cPage.value = cPage; 
 		r_frm.submit();
 	}
-	
+	function fDown(file_name){
+		
+		location.href="control?type=down&f_name="+file_name;
+	}
 	</script>
 </body>
 </html>
