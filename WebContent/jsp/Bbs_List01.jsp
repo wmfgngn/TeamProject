@@ -41,6 +41,7 @@
 <body>
 
 	<jsp:include page="header.jsp"/>
+	<br/><br/><br/>
 
 <div id="warp">
 	<div id="bbs">
