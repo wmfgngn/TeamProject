@@ -42,6 +42,7 @@ public class ListAction implements Action {
 		HttpSession session = request.getSession();
 		session.setAttribute("reqnum", reqnum);
 		session.setAttribute("pvo", pvo);
+		
 		return path;
 	}
 

@@ -52,7 +52,7 @@
 				</thead>
 				<tbody id="tbd">
 					<tr>
-						<td class="mv" colspan="2"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#ans">댓글</a></td>
+						<td class="mv" colspan="2"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#com_div">댓글</a></td>
 					</tr>
 					<tr>
 						<td id="title" colspan="4"><%=vo.getSubject() %></td>
@@ -157,7 +157,7 @@
 		});
 
 		$("#adr_bt").bind("click",function(){
-			$("#lb").html("<input id='copy_lb' type='input' value='"+ ad +"' readonly='readonly'/>");
+			$("#lb").html("<input id='copy_lb' type='input' value='"+ ad +"' readonly='readonly' style='border: none; width: 500px;'/>");
 		});
 
 		$("#copy_bt").bind("click",function(){

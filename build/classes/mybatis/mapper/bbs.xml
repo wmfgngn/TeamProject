@@ -140,4 +140,10 @@
      where b_idx = #{b_idx}
   </update>
 	
+  <!-- 검색 기능 -->
+	<select id="search" parameterType="String" resultType="project.vo.BbsVO">
+		select * from inven_bbs
+		where LOWER(subject) LIKE LOWER('%' || #{searchValue} || '%')
+	</select>	
+	
 </mapper>

@@ -20,6 +20,17 @@
 	#wrap{
 		margin: 0 auto;
 	}
+	.ellip {
+	display: inline-block;
+	width: 97%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
+	a {
+		text-decoration: none;
+		color: black;	
+	}
 </style>	
 	
 </head>
@@ -34,7 +45,7 @@
 				
 			for(BbsVO vo : ar){
 %>
-			<a href="#">
+			<a href="javascript:view('1', '<%=vo.getB_idx()%>')">
 				<div id="wrap">
 					<table id="searchTable">
 						<colgroup>
@@ -58,5 +69,19 @@
 			}
 		}
 %>
+
+	<form action="control" method="post" name="frm">
+		<input type="hidden" name="type" value="view"/>
+		<input type="hidden" name="cPage" />
+		<input type="hidden" name="b_idx" />
+	</form>
+	<%-- Script *******************************************************************--%>
+	<script>
+		function view(cPage, b_idx) {
+			document.frm.b_idx.value = b_idx;
+			document.frm.cPage.value = cPage;
+			document.frm.submit();
+		}
+	</script>
 </body>
 </html>

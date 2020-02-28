@@ -19,7 +19,9 @@
 	}
 	
 	String reqnum = request.getParameter("reqnum");
-	
+	if(reqnum == null) {
+		reqnum = (String)session.getAttribute("reqnum");
+	}
 	session.setAttribute("page", pvo);
 %>
 
