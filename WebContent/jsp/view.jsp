@@ -103,7 +103,7 @@
 				if(cvo.getRvo().getR_idx().equals(rvo.getR_idx())) {
 					%>								
 					<button type=button id="ans_edit" onclick="ans_edit('<%=vo.getB_idx()%>')">수정</button>
-					<button type=button id="ans_del" onclick="ans_del('<%=vo.getB_idx()%>')">삭제</button>
+					<button type=button id="ans_del" onclick="ans_del('<%=cvo.getC_idx()%>',<%=vo.getB_idx()%>)">삭제</button>
 			<%	} 
 			}%>
 			</div>
@@ -184,10 +184,10 @@
 	      
 	}
 	
-	function ans_del(b_idx){
+	function ans_del(c_idx,b_idx){
 		
 		var inputString = prompt("비밀번호 작성","");
-		var Param ="type=ans_del&b_idx="+encodeURIComponent(b_idx)+
+		var Param ="type=ans_del&c_idx="+encodeURIComponent(c_idx)+
 		"&pwd="+encodeURIComponent(inputString);
 		$.ajax({
 			url:"control",

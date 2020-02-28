@@ -148,13 +148,13 @@ public class BbsDAO {
 		}
 		
 	// 댓글 삭제 
-		public static boolean c_del(String b_idx,String pwd) {
+		public static boolean c_del(String c_idx,String pwd) {
 			boolean chk = false;
 			
 			SqlSession ss = FactoryService.getFactory().openSession();
 			Map<String, String>map = new HashMap<String, String>();
 			
-			map.put("b_idx",b_idx);
+			map.put("c_idx",c_idx);
 			map.put("pwd",pwd);
 			
 			int cnt = ss.update("bbs.c_del",map);

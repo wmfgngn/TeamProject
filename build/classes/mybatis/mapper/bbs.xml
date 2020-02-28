@@ -78,7 +78,7 @@
 	<update id="c_del" parameterType="java.util.Map">
 		UPDATE inven_comment
 		SET status = 1
-		WHERE b_idx = #{b_idx}
+		WHERE c_idx = #{c_idx}
 		AND	pwd = #{pwd}
 	</update>
 	<!--******************************-->
