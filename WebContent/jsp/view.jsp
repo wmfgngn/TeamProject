@@ -50,10 +50,16 @@
 		<div id="content">
 			<table id="ct">
 				<thead id="thd">
-					<tr>
-						<th><span class="sp"><%=vo.getWriter() %></span></th>
+					<tr class="sp">
+						<th><span><%=vo.getWriter() %></span></th>
 						<th><%=vo.getWrite_date() %></th>
-						<th>파일: <span class="sp"><%
+						<th>조회: <span><%=vo.getHit() %></span></th>
+						<th>추천: <span><%=vo.getRecommend() %></span></th>
+					</tr>
+				</thead>
+				<tbody id="tbd">
+					<tr>
+						<td colspan="2">파일: <span class="sp"><%
 						if(vo.getFile_name() != null &&
 						vo.getFile_name().length() > 4){
 						%>
@@ -61,13 +67,7 @@
 						<%=vo.getFile_name() %>
 						(<%=vo.getOri_name() %>)</a></span>
 							<%
-						}%></th>
-						<th>조회: <span class="sp"><%=vo.getHit() %></span></th>
-						<th>추천: <span class="sp"><%=vo.getRecommend() %></span></th>
-					</tr>
-				</thead>
-				<tbody id="tbd">
-					<tr>
+						}%></td>
 						<td class="mv" colspan="2"><a href="control?type=list&reqnum=<%=reqnum%>">목록</a>｜<a href="#com_div">댓글</a></td>
 					</tr>
 					<tr>
@@ -80,14 +80,14 @@
 				if(rvo != null) {
 			%>					
 					<tr>
-						<td colspan="4"><button type="button" id="best" onclick="best('<%=rvo.getR_idx()%>', '<%=cPage%>', '<%=vo.getB_idx()%>')">추천</button></td>
-					</tr>
+						<td colspan="2"><button type="button" id="best" onclick="best('<%=rvo.getR_idx()%>', '<%=cPage%>', '<%=vo.getB_idx()%>')">추천</button></td>
+
 			<%
 				} else {
 			%>
 					<tr>
-						<td colspan="4"><button type="button" id="best" onclick="alert('로그인 후 이용하세요!');">추천</button></td>
-					</tr>
+						<td colspan="2"><button type="button" id="best" onclick="alert('로그인 후 이용하세요!');">추천</button></td>
+
 			<%
 				}
 			%>
@@ -95,8 +95,10 @@
 					if(rvo != null) {
 					if(vo.getRvo().getR_idx().equals(rvo.getR_idx())){
 					%>
-					<tr><td colspan="4"><button type=button id="view_del" onclick="view_del('<%=reqnum%>',<%=vo.getB_idx()%>)">삭제</button></td>
-						<td colspan="4"><button type=button id="view_edit" onclick="javascript:location.href='control?type=view_edit&cPage=<%=cPage%>&reqnum=<%=reqnum%>&b_idx=<%=vo.getB_idx()%>'">수정</button></td>
+					<td colspan="2" class="edit_del">
+					<button type=button id="view_del" onclick="view_del('<%=reqnum%>',<%=vo.getB_idx()%>)">삭제</button>
+					<button type=button id="view_edit" onclick="javascript:location.href='control?type=view_edit&cPage=<%=cPage%>&reqnum=<%=reqnum%>&b_idx=<%=vo.getB_idx()%>'">수정</button>
+					</td>
 					</tr>
 					<% }
 					}%>
