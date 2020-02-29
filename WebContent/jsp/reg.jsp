@@ -6,26 +6,21 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <!-- Bootstrap core CSS -->
-    <title></title>
+<title></title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="../css/jquery-ui.min.css" rel="stylesheet">
 <style>
-
-	
-	#box{
-		float: right;
-		margin: 0;
-			}
+#box{
+	float: right;
+	margin: 0;
+}
 </style>
-  </head>
 </head>
 
 <body class="bg-light">
-
 <article>
 	<jsp:include page="header.jsp"/>
-	<jsp:include page="menu.jsp"/>
 <form action="control?type=regist" name="frm" method="post">	
 <div class="container">
   <div class="py-5 text-center">
@@ -94,11 +89,11 @@
 
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input id="s_wgender" name="s_gender" type="radio" class="custom-control-input" required>
+            <input id="s_wgender" name="s_gender" type="radio" value="W"  class="custom-control-input" required checked="checked">
             <label class="custom-control-label" for="s_wgender">여자</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="s_mgender" name="s_gender" type="radio" class="custom-control-input" required>
+            <input id="s_mgender" name="s_gender" type="radio" value="M" class="custom-control-input" required>
             <label class="custom-control-label" for="s_mgender">남자</label>
           </div>
         </div>
@@ -174,15 +169,10 @@ $(function(){
 			$("#s_phone3").focus();
 			return;
 		}
-		// 아이디가 이미 있으면 서브밋 안하고 경고창  없을때 서브밋
 	
-			if($("#box").html("사용가능")){
-				
-				alert("가입완료");
-				frm.submit();	
-			}else
-			alert("재입력하세요");
-		
+		if($("#box").html("사용가능")){
+			frm.submit();	
+		}
 	});
 	
 	

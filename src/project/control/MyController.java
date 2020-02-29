@@ -103,6 +103,8 @@ public class MyController extends HttpServlet {
 		} else {
 			if(type.equals("com") || type.equals("commedit")) {
 				response.sendRedirect("control?type=view&cPage=" + request.getAttribute("cPage") + "&b_idx=" + request.getAttribute("b_idx"));
+			} else if (type.equals("regist")) {
+				response.sendRedirect("control?type=main");
 			} else {
 				response.sendRedirect("control?type=list&reqnum="+request.getAttribute("thisReqnum"));
 			}

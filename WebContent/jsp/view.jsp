@@ -78,7 +78,7 @@
 					</tr>
 			<%
 				if(rvo != null) {
-			%>					
+			%>
 					<tr>
 						<td colspan="2"><button type="button" id="best" onclick="best('<%=rvo.getR_idx()%>', '<%=cPage%>', '<%=vo.getB_idx()%>')">추천</button></td>
 
@@ -222,6 +222,8 @@
 			if(data.value == "true"){
 				alert("댓글삭제 완료");
 				location.href="control?type=view&b_idx="+<%=vo.getB_idx()%>;
+			} else {
+				alert("댓글삭제 실패");
 			}
 		}).fail(function(err){
 			console.log(err)

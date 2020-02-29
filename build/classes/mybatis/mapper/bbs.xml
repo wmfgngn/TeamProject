@@ -69,7 +69,7 @@
 	
 	<!-- 댓글 저장 -->
 	<insert id="c_add" parameterType="java.util.Map">
-		INSERT INTO inven_comment
+		INSERT INTO inven_comment (C_IDX, WRITER, CONTENT, PWD, WRITE_DATE, IP, B_IDX, R_IDX, STATUS) 
 		VALUES (comment_t_seq.NEXTVAL, #{writer}, #{content}, #{pwd}, SYSDATE, #{ip}, #{b_idx}, #{r_idx}, #{status})
 	</insert>
 	<!--******************************-->
