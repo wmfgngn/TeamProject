@@ -172,7 +172,7 @@ if(obj != null) {
 		<input type="hidden" name="cPage" />
 		<input type="hidden" name="b_idx" />
 	</form>
-	
+
 	<%-- Script *******************************************************************--%>
 	<script>
 		function view(cPage, b_idx) {
@@ -180,7 +180,7 @@ if(obj != null) {
 			document.frm.cPage.value = cPage;
 			document.frm.submit();
 		}
-		
+
 		function aaa(){
 			alert("로그인 후 이용하세요!");
 		}

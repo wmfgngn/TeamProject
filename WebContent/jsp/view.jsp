@@ -181,7 +181,7 @@
 		$("#copy_bt").bind("click",function(){
 			
 			$("#copy_lb").select();
-			document.execCommand("copy"); 
+			document.execCommand("copy");
 	        
 			alert('복사되었습니다.'); 
 		});
@@ -207,7 +207,7 @@
 	      });
 	      
 	}
-	
+
 	function ans_del(c_idx,b_idx){
 		var inputString = prompt("비밀번호 작성","");
 		var Param ="type=ans_del&c_idx="+encodeURIComponent(c_idx)+
